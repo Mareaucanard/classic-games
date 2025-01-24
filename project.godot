@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Classic games"
+run/main_scene="res://Games/Space invaders/Levels/Level.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://Games/Space invaders/Actors/": "red",
+"res://Games/Space invaders/Levels/": "green"
+}
+
+[layer_names]
+
+2d_physics/layer_1="enemies"
+2d_physics/layer_2="player"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

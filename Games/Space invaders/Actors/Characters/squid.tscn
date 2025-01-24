@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxb2msub8waur"]
+
+[ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/enemies.gd" id="1_0vfr3"]
+[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_8x67x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0dg5"]
+size = Vector2(10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwa2g"]
+atlas = ExtResource("1_8x67x")
+region = Rect2(1, 1, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5omo"]
+atlas = ExtResource("1_8x67x")
+region = Rect2(1, 11, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8r5ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwa2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5omo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Squid" type="Node2D"]
+script = ExtResource("1_0vfr3")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2.018, 2.018)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s0dg5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_8r5ut")
+frame_progress = 0.222506
