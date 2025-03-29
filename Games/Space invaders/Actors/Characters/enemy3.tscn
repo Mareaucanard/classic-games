@@ -28,8 +28,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0dg5"]
 size = Vector2(10, 8)
 
-[node name="Squid" type="Node2D"]
+[node name="Enemy" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_vu7gp")
+points = 20
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(2.018, 2.018)

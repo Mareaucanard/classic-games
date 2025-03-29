@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://khvasflt5xu"]
+
+[ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/ufo.gd" id="1_6mx5o"]
+[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="2_crs3n"]
+[ext_resource type="AudioStream" uid="uid://diatwk70fy64f" path="res://Games/Space invaders/Sounds/ufo_highpitch.wav" id="3_keyce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qnju"]
+atlas = ExtResource("2_crs3n")
+region = Rect2(1, 39, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wk0s7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qnju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kua7q"]
+size = Vector2(16, 8)
+
+[node name="UFO" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_6mx5o")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2.018, 2.018)
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+self_modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_wk0s7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kua7q")
+
+[node name="UfoHighpitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_keyce")
+volume_db = -15.0
+autoplay = true

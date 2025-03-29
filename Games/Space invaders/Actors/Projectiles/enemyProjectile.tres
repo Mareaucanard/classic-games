@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://40oqyn236p4f"]
+
+[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_5fvw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31ead"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(21, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6ttb"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(26, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51vur"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(31, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2ap8"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(36, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cia8"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(1, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfcnt"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(6, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhw4i"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(11, 21, 3, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3fbp"]
+atlas = ExtResource("1_5fvw6")
+region = Rect2(16, 21, 3, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31ead")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6ttb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51vur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2ap8")
+}],
+"loop": true,
+"name": &"type1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cia8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfcnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhw4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3fbp")
+}],
+"loop": true,
+"name": &"type2",
+"speed": 5.0
+}]

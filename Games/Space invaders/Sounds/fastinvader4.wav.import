@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://h58rq8eho78n"
+path="res://.godot/imported/fastinvader4.wav-42d92ccfda14c2567b5614dcafa8ed80.sample"
+
+[deps]
+
+source_file="res://Games/Space invaders/Sounds/fastinvader4.wav"
+dest_files=["res://.godot/imported/fastinvader4.wav-42d92ccfda14c2567b5614dcafa8ed80.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

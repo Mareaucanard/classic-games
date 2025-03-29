@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://0heivtk7h7iw"]
+
+[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_w4504"]
+[ext_resource type="Script" path="res://Games/Space invaders/time_to_live.gd" id="2_70yxw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qblcy"]
+atlas = ExtResource("1_w4504")
+region = Rect2(61, 21, 6, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kposl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qblcy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["explosion"]]
+scale = Vector2(2.018, 2.018)
+sprite_frames = SubResource("SpriteFrames_kposl")
+script = ExtResource("2_70yxw")

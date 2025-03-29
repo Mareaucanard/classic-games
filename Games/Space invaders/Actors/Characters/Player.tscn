@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkf7sij8dg20i"]
+[gd_scene load_steps=11 format=3 uid="uid://bkf7sij8dg20i"]
 
 [ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/player.gd" id="1_4t5vw"]
 [ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_7ibbc"]
 [ext_resource type="PackedScene" uid="uid://cbh864lf4sg1y" path="res://Games/Space invaders/Actors/Projectiles/PlayerProjectile.tscn" id="2_n4a8c"]
+[ext_resource type="AudioStream" uid="uid://dtuwiilb75mbs" path="res://Games/Space invaders/Sounds/explosion.wav" id="4_l4ee6"]
+[ext_resource type="AudioStream" uid="uid://cmcm2fc017vjn" path="res://Games/Space invaders/Sounds/shoot.wav" id="5_m0ej1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jkbl"]
 size = Vector2(13.75, 8)
@@ -10,6 +12,14 @@ size = Vector2(13.75, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rfi7"]
 atlas = ExtResource("1_7ibbc")
 region = Rect2(1, 49, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2gdw"]
+atlas = ExtResource("1_7ibbc")
+region = Rect2(19, 49, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yck7h"]
+atlas = ExtResource("1_7ibbc")
+region = Rect2(37, 49, 16, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jc6v2"]
 animations = [{
@@ -20,6 +30,17 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2gdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yck7h")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 8.0
 }]
 
 [node name="Player" type="Node2D"]
@@ -38,3 +59,15 @@ shape = SubResource("RectangleShape2D_0jkbl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 self_modulate = Color(0, 1, 0, 1)
 sprite_frames = SubResource("SpriteFrames_jc6v2")
+animation = &"explosion"
+frame_progress = 0.2789
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l4ee6")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_m0ej1")
+volume_db = -15.0
+max_polyphony = 2
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

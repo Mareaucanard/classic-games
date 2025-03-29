@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvyuyc4njsht1"]
+
+[ext_resource type="Texture2D" uid="uid://368eh2ec1d3i" path="res://Games/Pacman/Ressources/Arcade - Pac-Man - General Sprites.png" id="1_u82o0"]
+[ext_resource type="LabelSettings" uid="uid://h5li01304t0l" path="res://Games/Pacman/Ressources/pacman_font.tres" id="2_45jim"]
+[ext_resource type="PackedScene" uid="uid://bnyb3sre4554q" path="res://Games/Pacman/Actors/Pacman.tscn" id="3_d8bi4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_finqs"]
+atlas = ExtResource("1_u82o0")
+region = Rect2(0, 0, 226, 248)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yrlfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_finqs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_celxj"]
+atlas = ExtResource("1_u82o0")
+region = Rect2(584, 16, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_offgi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_celxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level" type="Node2D"]
+
+[node name="Maze" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_yrlfn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+offset_right = 1152.0
+offset_bottom = 700.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameZone" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 346.0
+offset_right = 806.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreUI" type="HBoxContainer" parent="GameZone"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="ScoreVbox" type="VBoxContainer" parent="GameZone/ScoreUI"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="GameZone/ScoreUI/ScoreVbox"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "SCORE "
+label_settings = ExtResource("2_45jim")
+
+[node name="Score" type="Label" parent="GameZone/ScoreUI/ScoreVbox"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100000"
+label_settings = ExtResource("2_45jim")
+
+[node name="HiddenText" type="Label" parent="GameZone/ScoreUI/ScoreVbox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100000"
+label_settings = ExtResource("2_45jim")
+
+[node name="HighscoreVbox" type="VBoxContainer" parent="GameZone/ScoreUI"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="GameZone/ScoreUI/HighscoreVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "  HIGH SCORE"
+label_settings = ExtResource("2_45jim")
+
+[node name="Score" type="Label" parent="GameZone/ScoreUI/HighscoreVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1000000"
+label_settings = ExtResource("2_45jim")
+
+[node name="BottomUI" type="HBoxContainer" parent="GameZone"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameZone/BottomUI"]
+layout_mode = 2
+
+[node name="Life1" type="AnimatedSprite2D" parent="GameZone/BottomUI/HBoxContainer"]
+position = Vector2(52, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_offgi")
+
+[node name="Life2" type="AnimatedSprite2D" parent="GameZone/BottomUI/HBoxContainer"]
+position = Vector2(87, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_offgi")
+
+[node name="Life3" type="AnimatedSprite2D" parent="GameZone/BottomUI/HBoxContainer"]
+position = Vector2(122, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_offgi")
+
+[node name="Life4" type="AnimatedSprite2D" parent="GameZone/BottomUI/HBoxContainer"]
+position = Vector2(157, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_offgi")
+
+[node name="Life5" type="AnimatedSprite2D" parent="GameZone/BottomUI/HBoxContainer"]
+position = Vector2(192, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_offgi")
+
+[node name="FruitUISpawnLocation" type="Marker2D" parent="GameZone/BottomUI"]
+position = Vector2(408, 0)
+
+[node name="Pacman" parent="." instance=ExtResource("3_d8bi4")]
+position = Vector2(431, 496)

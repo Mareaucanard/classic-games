@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6e85l8hf4kqq"]
+[gd_scene load_steps=10 format=3 uid="uid://6e85l8hf4kqq"]
 
 [ext_resource type="Texture2D" uid="uid://oy74wfk2gd6n" path="res://white_square.png" id="1_1oi55"]
 [ext_resource type="Script" path="res://Games/Space invaders/Levels/level.gd" id="1_xcvmt"]
@@ -8,13 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ef6btmaer231" path="res://Games/Space invaders/Actors/Characters/crab.tscn" id="4_a65ve"]
 [ext_resource type="PackedScene" uid="uid://qcg5llrga63x" path="res://Games/Space invaders/Actors/Characters/enemy3.tscn" id="5_8tkfl"]
 [ext_resource type="PackedScene" uid="uid://bkf7sij8dg20i" path="res://Games/Space invaders/Actors/Characters/Player.tscn" id="6_uf654"]
-[ext_resource type="Script" path="res://Games/Space invaders/Levels/text_display.gd" id="8_egyod"]
-[ext_resource type="AudioStream" uid="uid://bgwe18ub06trq" path="res://Games/Space invaders/Sounds/fastinvader1.wav" id="10_em0k4"]
-[ext_resource type="AudioStream" uid="uid://d4gtypffqbcm0" path="res://Games/Space invaders/Sounds/fastinvader2.wav" id="11_0liju"]
-[ext_resource type="AudioStream" uid="uid://devl014kt1k8u" path="res://Games/Space invaders/Sounds/fastinvader3.wav" id="12_ikdyc"]
-[ext_resource type="AudioStream" uid="uid://h58rq8eho78n" path="res://Games/Space invaders/Sounds/fastinvader4.wav" id="13_g11cg"]
-[ext_resource type="AudioStream" uid="uid://c5smup4uqtekm" path="res://Games/Space invaders/Sounds/invaderkilled.wav" id="14_i85kq"]
-[ext_resource type="AudioStream" uid="uid://cmcm2fc017vjn" path="res://Games/Space invaders/Sounds/shoot.wav" id="15_p2pqj"]
 
 [sub_resource type="Curve2D" id="Curve2D_j2y0o"]
 _data = {
@@ -25,6 +18,7 @@ point_count = 2
 [node name="Level" type="Node2D"]
 script = ExtResource("1_xcvmt")
 x_offset = 33
+y_offset = null
 crab = ExtResource("4_a65ve")
 squid = ExtResource("3_dvffm")
 enemy3 = ExtResource("5_8tkfl")
@@ -91,7 +85,7 @@ layout_mode = 2
 texture = ExtResource("3_0reao")
 expand_mode = 3
 
-[node name="Ship 2" type="TextureRect" parent="UI/Background/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Ship 3" type="TextureRect" parent="UI/Background/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 self_modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 texture = ExtResource("3_0reao")
@@ -123,105 +117,38 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="UI/Background/HBoxContainer/Score"]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "SCORE"
 label_settings = ExtResource("2_vupjj")
 
 [node name="ScoreLabel" type="Label" parent="UI/Background/HBoxContainer/Score"]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "0000"
 label_settings = ExtResource("2_vupjj")
 
-[node name="Highscore" type="VBoxContainer" parent="UI/Background/HBoxContainer"]
+[node name="Hightscore" type="VBoxContainer" parent="UI/Background/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="UI/Background/HBoxContainer/Highscore"]
+[node name="Label" type="Label" parent="UI/Background/HBoxContainer/Hightscore"]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "HIGHSCORE"
 label_settings = ExtResource("2_vupjj")
 
-[node name="ScoreLabel" type="Label" parent="UI/Background/HBoxContainer/Highscore"]
+[node name="HighscoreLabel" type="Label" parent="UI/Background/HBoxContainer/Hightscore"]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "0000"
 label_settings = ExtResource("2_vupjj")
 
-[node name="GameOver" type="Label" parent="UI/Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -72.0
-offset_top = 84.0
-offset_right = 72.0
-offset_bottom = 107.0
-grow_horizontal = 2
-text = "GAME OVER"
-label_settings = ExtResource("2_vupjj")
-visible_characters = 0
-visible_ratio = 0.0
-script = ExtResource("8_egyod")
-
-[node name="Pause" type="Label" parent="UI/Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -232.0
-offset_right = 40.0
-offset_bottom = -209.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "PAUSE"
-label_settings = ExtResource("2_vupjj")
-horizontal_alignment = 1
-
-[node name="AlienSpawn" type="Marker2D" parent="."]
-position = Vector2(413, 160)
-
-[node name="UFOSpawn" type="Marker2D" parent="."]
-position = Vector2(800, 78)
+[node name="TopRightSpawn" type="Marker2D" parent="."]
+position = Vector2(413, 200)
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(360.75, 562)
+position = Vector2(360.75, 602)
 curve = SubResource("Curve2D_j2y0o")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(217, 0)
-progress = 217.0
+position = Vector2(185.709, 0)
+progress = 185.709
 rotates = false
 
 [node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("6_uf654")]
-
-[node name="Audio" type="Node" parent="."]
-
-[node name="InvadersMove" type="Node" parent="Audio"]
-
-[node name="Invader1" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("10_em0k4")
-
-[node name="Invader2" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("11_0liju")
-
-[node name="Invader3" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("12_ikdyc")
-
-[node name="Invader4" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("13_g11cg")
-
-[node name="Invaderkilled" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("14_i85kq")
-
-[node name="Shoot" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("15_p2pqj")
-
-[connection signal="done" from="UI/Background/GameOver" to="." method="_on_game_over_done"]
-[connection signal="finish_hit_animation" from="Path2D/PathFollow2D/Player" to="." method="_on_player_finish_hit_animation"]
-[connection signal="player_got_hit" from="Path2D/PathFollow2D/Player" to="." method="_on_player_player_got_hit"]
-[connection signal="revived" from="Path2D/PathFollow2D/Player" to="." method="_on_player_revived"]

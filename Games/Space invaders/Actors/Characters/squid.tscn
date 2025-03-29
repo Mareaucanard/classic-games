@@ -29,7 +29,9 @@ animations = [{
 }]
 
 [node name="Squid" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_0vfr3")
+points = 30
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(2.018, 2.018)
