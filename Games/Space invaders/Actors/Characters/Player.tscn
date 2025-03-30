@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkf7sij8dg20i"]
 
-[ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/player.gd" id="1_4t5vw"]
+[ext_resource type="Script" uid="uid://bw0ky7k2dt1fd" path="res://Games/Space invaders/Actors/Characters/player.gd" id="1_4t5vw"]
 [ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_7ibbc"]
 [ext_resource type="PackedScene" uid="uid://cbh864lf4sg1y" path="res://Games/Space invaders/Actors/Projectiles/PlayerProjectile.tscn" id="2_n4a8c"]
 [ext_resource type="AudioStream" uid="uid://dtuwiilb75mbs" path="res://Games/Space invaders/Sounds/explosion.wav" id="4_l4ee6"]

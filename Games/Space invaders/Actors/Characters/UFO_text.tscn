@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtouoida84f7a"]
 
-[ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/ufo_text.gd" id="1_aq4kl"]
+[ext_resource type="Script" uid="uid://cn1ubd6gypxbt" path="res://Games/Space invaders/Actors/Characters/ufo_text.gd" id="1_aq4kl"]
 [ext_resource type="AudioStream" uid="uid://bvhqofrt0jett" path="res://Games/Space invaders/Sounds/ufo_lowpitch.wav" id="2_8o674"]
 [ext_resource type="LabelSettings" uid="uid://pbnab3h6faew" path="res://Games/Space invaders/Space_invaders_font_setting.tres" id="3_dpaqu"]
 

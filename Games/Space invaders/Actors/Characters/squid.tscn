@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxb2msub8waur"]
 
-[ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/enemies.gd" id="1_0vfr3"]
+[ext_resource type="Script" uid="uid://7ebcttnmf37n" path="res://Games/Space invaders/Actors/Characters/enemies.gd" id="1_0vfr3"]
 [ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_8x67x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0dg5"]

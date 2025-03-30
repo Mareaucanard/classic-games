@@ -13,6 +13,8 @@ static func save_data(data: Dictionary):
 static func read_data() -> Dictionary:
 	var data: Dictionary = {}
 	var file = FileAccess.open(save_file, FileAccess.READ_WRITE)
+	if file == null:
+		return data
 	while file.get_position() < file.get_length():
 		var json_string = file.get_line()
 		var row = JSON.new()

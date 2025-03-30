@@ -52,7 +52,6 @@ func spawn_aliens():
 	clear_alien_grid()
 	var y_pos = $AlienSpawn.global_position.y
 	var x_pos = $AlienSpawn.global_position.x
-	var enemy_index: int = 0
 	var row_index = 0
 	for enemy_type in row_enemy_types:
 		for i in range(enemy_per_row):
@@ -65,7 +64,6 @@ func spawn_aliens():
 			alien.connect("exploded", on_alien_exploded)
 			add_child(alien)
 			alien_grid.push_front(alien)
-			enemy_index += 1
 		row_index += 1
 		y_pos += y_offset
 	alien_grid.sort_custom(func(a, b): return a.ordered_index < b.ordered_index)

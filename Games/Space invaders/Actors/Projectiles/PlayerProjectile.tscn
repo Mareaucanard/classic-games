@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbh864lf4sg1y"]
 
 [ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_8q8ai"]
-[ext_resource type="Script" path="res://Games/Space invaders/Actors/Projectiles/PlayerProjectile.gd" id="1_cc5bj"]
+[ext_resource type="Script" uid="uid://cconwbe3jkke8" path="res://Games/Space invaders/Actors/Projectiles/PlayerProjectile.gd" id="1_cc5bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a71qi"]
 size = Vector2(2, 8)

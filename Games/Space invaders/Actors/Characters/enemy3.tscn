@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://qcg5llrga63x"]
 
 [ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_qrapn"]
-[ext_resource type="Script" path="res://Games/Space invaders/Actors/Characters/enemies.gd" id="1_vu7gp"]
+[ext_resource type="Script" uid="uid://7ebcttnmf37n" path="res://Games/Space invaders/Actors/Characters/enemies.gd" id="1_vu7gp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccnkf"]
 atlas = ExtResource("1_qrapn")
