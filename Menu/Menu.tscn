@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnhtbuwfm8mvf"]
+
+[ext_resource type="Script" uid="uid://dtib4vt42sfbo" path="res://Menu/game_selector.gd" id="1_e56cd"]
+[ext_resource type="PackedScene" uid="uid://b80ttqbg5s3gk" path="res://Menu/MenuItems/MenuItemBase.tscn" id="1_jf1j2"]
+[ext_resource type="PackedScene" uid="uid://big407jcu4eev" path="res://Menu/MenuItems/PacmanMenuItem.tscn" id="3_crea4"]
+[ext_resource type="PackedScene" uid="uid://d2bhjvi7q3cch" path="res://Menu/MenuItems/SpaceInvadersMenuItem.tscn" id="4_w32jx"]
+
+[sub_resource type="Theme" id="Theme_e56cd"]
+VScrollBar/styles/grabber_pressed = null
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e56cd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 1, 0.494118, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_e56cd")
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Pacman" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_jf1j2")]
+layout_mode = 2
+
+[node name="MainMenu" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_crea4")]
+layout_mode = 2
+
+[node name="SpaceInvaders" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_w32jx")]
+layout_mode = 2
+
+[node name="LaunchButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Laucnh Scene
+"
+
+[connection signal="pressed" from="LaunchButton" to="." method="_on_launch_button_pressed"]
