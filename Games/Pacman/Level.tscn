@@ -144,4 +144,193 @@ sprite_frames = SubResource("SpriteFrames_offgi")
 position = Vector2(408, 0)
 
 [node name="Pacman" parent="." instance=ExtResource("3_d8bi4")]
-position = Vector2(431, 496)
+position = Vector2(574, 263)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="T-Shaped" type="Node2D" parent="Walls"]
+
+[node name="TopLeft" type="StaticBody2D" parent="Walls/T-Shaped"]
+position = Vector2(470, 180)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/T-Shaped/TopLeft"]
+scale = Vector2(17.3418, 3.51679)
+polygon = PackedVector2Array(0, 0, 0.922625, 0, 0.922625, 13.6488, 3.6905, 13.6488, 3.6905, 18.1984, 0.922625, 18.1984, 0.922625, 31.8472, -1.90735e-06, 31.8472)
+
+[node name="TopCenter" type="StaticBody2D" parent="Walls/T-Shaped"]
+position = Vector2(630, 180)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/T-Shaped/TopCenter"]
+scale = Vector2(17.3418, 3.51679)
+polygon = PackedVector2Array(0, 0, 0.922625, 0, 0.922625, 13.6488, 3.6905, 13.6488, 3.6905, 18.1984, 0.922625, 18.1984, 0.922625, 31.8472, -1.90735e-06, 31.8472)
+
+[node name="TopRight" type="StaticBody2D" parent="Walls/T-Shaped"]
+position = Vector2(678, 292)
+rotation = 3.14159
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/T-Shaped/TopRight"]
+scale = Vector2(17.3418, 3.51679)
+polygon = PackedVector2Array(0, 0, 0.922625, 0, 0.922625, 13.6488, 3.6905, 13.6488, 3.6905, 18.1984, 0.922625, 18.1984, 0.922625, 31.8472, -1.90735e-06, 31.8472)
+
+[node name="Bottom1" type="StaticBody2D" parent="Walls/T-Shaped"]
+position = Vector2(630, 372)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/T-Shaped/Bottom1"]
+scale = Vector2(17.3418, 3.51679)
+polygon = PackedVector2Array(0, 0, 0.922625, 0, 0.922625, 13.6488, 3.6905, 13.6488, 3.6905, 18.1984, 0.922625, 18.1984, 0.922625, 31.8472, -1.90735e-06, 31.8472)
+
+[node name="Bottom2" type="StaticBody2D" parent="Walls/T-Shaped"]
+position = Vector2(630, 468)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/T-Shaped/Bottom2"]
+scale = Vector2(17.3418, 3.51679)
+polygon = PackedVector2Array(0, 0, 0.922625, 0, 0.922625, 13.6488, 3.6905, 13.6488, 3.6905, 18.1984, 0.922625, 18.1984, 0.922625, 31.8472, -1.90735e-06, 31.8472)
+
+[node name="BigBlocks" type="Node2D" parent="Walls"]
+
+[node name="TopLeft" type="StaticBody2D" parent="Walls/BigBlocks"]
+position = Vector2(390, 116)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BigBlocks/TopLeft"]
+polygon = PackedVector2Array(0, 0, 48, 0, 48, 32, 0, 32)
+
+[node name="MiddleLeft" type="StaticBody2D" parent="Walls/BigBlocks"]
+position = Vector2(470, 116)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BigBlocks/MiddleLeft"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 32, 0, 32)
+
+[node name="MiddleRight" type="StaticBody2D" parent="Walls/BigBlocks"]
+position = Vector2(614, 116)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BigBlocks/MiddleRight"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 32, 0, 32)
+
+[node name="TopRight" type="StaticBody2D" parent="Walls/BigBlocks"]
+position = Vector2(710, 116)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/BigBlocks/TopRight"]
+polygon = PackedVector2Array(0, 0, 48, 0, 48, 32, 0, 32)
+
+[node name="SmallBlocks" type="Node2D" parent="Walls"]
+
+[node name="Horizontal" type="Node2D" parent="Walls/SmallBlocks"]
+
+[node name="TopLeft" type="StaticBody2D" parent="Walls/SmallBlocks/Horizontal"]
+position = Vector2(390, 180)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Horizontal/TopLeft"]
+polygon = PackedVector2Array(0, 0, 48, 0, 48, 16, 0, 16)
+
+[node name="BottomLeft" type="StaticBody2D" parent="Walls/SmallBlocks/Horizontal"]
+position = Vector2(470, 420)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Horizontal/BottomLeft"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 16, 0, 16)
+
+[node name="BottomRight" type="StaticBody2D" parent="Walls/SmallBlocks/Horizontal"]
+position = Vector2(614, 420)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Horizontal/BottomRight"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 16, 0, 16)
+
+[node name="TopRight" type="StaticBody2D" parent="Walls/SmallBlocks/Horizontal"]
+position = Vector2(390, 180)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Horizontal/TopRight"]
+position = Vector2(320, 0)
+polygon = PackedVector2Array(0, 0, 48, 0, 48, 16, 0, 16)
+
+[node name="CornerLeft" type="StaticBody2D" parent="Walls/SmallBlocks"]
+position = Vector2(357, 468)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/CornerLeft"]
+polygon = PackedVector2Array(0, 0, 33, 0, 33, 16, 0, 16)
+
+[node name="CornerRight" type="StaticBody2D" parent="Walls/SmallBlocks"]
+position = Vector2(758, 468)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/CornerRight"]
+polygon = PackedVector2Array(0, 0, 33, 0, 33, 16, 0, 16)
+
+[node name="Vertical" type="Node2D" parent="Walls/SmallBlocks"]
+
+[node name="Left" type="StaticBody2D" parent="Walls/SmallBlocks/Vertical"]
+position = Vector2(470, 324)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Vertical/Left"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 64, 0, 64)
+
+[node name="Top" type="StaticBody2D" parent="Walls/SmallBlocks/Vertical"]
+position = Vector2(566, 84)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Vertical/Top"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 64, 0, 64)
+
+[node name="Right" type="StaticBody2D" parent="Walls/SmallBlocks/Vertical"]
+position = Vector2(662, 324)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/SmallBlocks/Vertical/Right"]
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 64, 0, 64)
+
+[node name="L-Shaped" type="Node2D" parent="Walls"]
+
+[node name="Left" type="StaticBody2D" parent="Walls/L-Shaped"]
+position = Vector2(390, 420)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/L-Shaped/Left"]
+polygon = PackedVector2Array(48, 0, 48, 64, 32, 64, 32, 16, 0, 16, 0, 0)
+
+[node name="Right" type="StaticBody2D" parent="Walls/L-Shaped"]
+position = Vector2(678, 420)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/L-Shaped/Right"]
+polygon = PackedVector2Array(48, 16, 48, 64, 32, 64, 32, 0, 80, 0, 80, 16)
+
+[node name="WeirdShape" type="Node2D" parent="Walls"]
+
+[node name="Left" type="StaticBody2D" parent="Walls/WeirdShape"]
+position = Vector2(390, 516)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WeirdShape/Left"]
+polygon = PackedVector2Array(0, 0, 80, 0, 80, -48, 96, -48, 96, 0, 144, 0, 144, 16, 0, 16)
+
+[node name="Right" type="StaticBody2D" parent="Walls/WeirdShape"]
+position = Vector2(614, 516)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WeirdShape/Right"]
+polygon = PackedVector2Array(0, 0, 48, 0, 48, -48, 64, -48, 64, 0, 144, 0, 144, 16, 0, 16)
+
+[node name="OuterWalls" type="Node2D" parent="Walls"]
+
+[node name="Up" type="StaticBody2D" parent="Walls/OuterWalls"]
+position = Vector2(350, 284)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/OuterWalls/Up"]
+polygon = PackedVector2Array(0, 0, 80, 0, 80, -48, 0, -48, 0, -208, 448, -208, 448, -48, 368, -48, 368, 0, 448, 0, 448, 8, 360, 8, 360, -56, 440, -56, 440, -200, 8, -200, 8, -56, 88, -56, 88, 8, 0, 8)
+
+[node name="Down" type="StaticBody2D" parent="Walls/OuterWalls"]
+position = Vector2(800, 331)
+rotation = 3.14159
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/OuterWalls/Down"]
+position = Vector2(2, -1)
+polygon = PackedVector2Array(0, 0, 80, 0, 80, -48, 0, -48, -1.00006, -240, 448, -240, 448, -48, 368, -48, 368, 0, 448, 0, 448, 8, 360, 8, 360, -56, 440, -56, 440, -232, 7.99994, -232, 8, -56, 88, -56, 88, 8, 0, 8)
+
+[node name="GhostSpawn" type="Node2D" parent="Walls"]
+
+[node name="Walls" type="StaticBody2D" parent="Walls/GhostSpawn"]
+position = Vector2(518, 276)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/GhostSpawn/Walls"]
+polygon = PackedVector2Array(0, 0, 40, 0, 40, 8, 8, 8, 8, 56, 104, 56, 104, 8, 72, 8, 72, 0, 112, 0, 112, 64, 0, 64)
+
+[node name="Door" type="StaticBody2D" parent="Walls/GhostSpawn"]
+position = Vector2(590, 280)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/GhostSpawn/Door"]
+polygon = PackedVector2Array(0, 4, -32, 4, -32, -4, 0, -4)
+one_way_collision = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bnyb3sre4554q"]
+[gd_scene load_steps=27 format=3 uid="uid://bnyb3sre4554q"]
 
 [ext_resource type="Script" uid="uid://lcktbp7vmkii" path="res://Games/Pacman/Actors/pacman.gd" id="1_5os5w"]
 [ext_resource type="Texture2D" uid="uid://368eh2ec1d3i" path="res://Games/Pacman/Ressources/Arcade - Pac-Man - General Sprites.png" id="1_lqg7s"]
@@ -51,33 +51,33 @@ region = Rect2(648, 1, 15, 15)
 atlas = ExtResource("1_lqg7s")
 region = Rect2(664, 1, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kupmd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k3rr"]
 atlas = ExtResource("1_lqg7s")
-region = Rect2(472, 46, 15, 15)
+region = Rect2(488, 1, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebph1"]
 atlas = ExtResource("1_lqg7s")
 region = Rect2(456, 46, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5k3rr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kupmd"]
 atlas = ExtResource("1_lqg7s")
-region = Rect2(488, 1, 15, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4yegt"]
-atlas = ExtResource("1_lqg7s")
-region = Rect2(472, 16, 15, 15)
+region = Rect2(472, 46, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20dty"]
 atlas = ExtResource("1_lqg7s")
 region = Rect2(456, 16, 15, 15)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc1uj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yegt"]
 atlas = ExtResource("1_lqg7s")
-region = Rect2(472, 1, 15, 15)
+region = Rect2(472, 16, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hej5"]
 atlas = ExtResource("1_lqg7s")
 region = Rect2(456, 1, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc1uj"]
+atlas = ExtResource("1_lqg7s")
+region = Rect2(472, 1, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqnvg"]
 atlas = ExtResource("1_lqg7s")
@@ -132,49 +132,58 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kupmd")
+"texture": SubResource("AtlasTexture_5k3rr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ebph1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5k3rr")
+"texture": SubResource("AtlasTexture_kupmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebph1")
 }],
 "loop": true,
 "name": &"down",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4yegt")
+"texture": SubResource("AtlasTexture_5k3rr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_20dty")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5k3rr")
+"texture": SubResource("AtlasTexture_4yegt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20dty")
 }],
 "loop": true,
 "name": &"left",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oc1uj")
+"texture": SubResource("AtlasTexture_5k3rr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8hej5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5k3rr")
+"texture": SubResource("AtlasTexture_oc1uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hej5")
 }],
 "loop": true,
-"name": &"rigth",
-"speed": 5.0
+"name": &"right",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -186,23 +195,37 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5k3rr")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cw7yh")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l8kq2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5k3rr")
+"texture": SubResource("AtlasTexture_cw7yh")
 }],
 "loop": true,
 "name": &"up",
-"speed": 5.0
+"speed": 7.0
 }]
 
-[node name="Pacman" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhs0h"]
+size = Vector2(28, 28)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_max_angle = 3.14159
+floor_snap_length = 0.0
 script = ExtResource("1_5os5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.6, 2.6)
 sprite_frames = SubResource("SpriteFrames_c2ljp")
-animation = &"up"
+animation = &"down"
+frame_progress = 0.49797
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fhs0h")
