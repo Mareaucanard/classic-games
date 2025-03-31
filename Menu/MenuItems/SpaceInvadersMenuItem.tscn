@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2bhjvi7q3cch"]
+[gd_scene load_steps=6 format=3 uid="uid://d2bhjvi7q3cch"]
 
 [ext_resource type="Script" uid="uid://dgmvbm4w8xdfi" path="res://Menu/menu_item.gd" id="1_s68i0"]
 [ext_resource type="PackedScene" uid="uid://6e85l8hf4kqq" path="res://Games/Space invaders/Levels/Level.tscn" id="2_s68i0"]
+[ext_resource type="Texture2D" uid="uid://d2mbu3rgywmum" path="res://Menu/MenuItems/Screenshots/SpaceInvaders.png" id="3_0uqmk"]
+[ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="3_jcpp2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x1jk4"]
 size = Vector2(536, 77)
@@ -17,6 +19,7 @@ size_flags_vertical = 3
 texture = SubResource("PlaceholderTexture2D_x1jk4")
 script = ExtResource("1_s68i0")
 scene = ExtResource("2_s68i0")
+screenshot = ExtResource("3_0uqmk")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -27,5 +30,18 @@ grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
 text = "Space Invaders"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Defend the earth from alien threats
+Shoot them down to try and get the highscore"
+label_settings = ExtResource("3_jcpp2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

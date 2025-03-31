@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnhtbuwfm8mvf"]
+[gd_scene load_steps=7 format=3 uid="uid://cnhtbuwfm8mvf"]
 
 [ext_resource type="Script" uid="uid://dtib4vt42sfbo" path="res://Menu/game_selector.gd" id="1_e56cd"]
-[ext_resource type="PackedScene" uid="uid://b80ttqbg5s3gk" path="res://Menu/MenuItems/MenuItemBase.tscn" id="1_jf1j2"]
 [ext_resource type="PackedScene" uid="uid://big407jcu4eev" path="res://Menu/MenuItems/PacmanMenuItem.tscn" id="3_crea4"]
 [ext_resource type="PackedScene" uid="uid://d2bhjvi7q3cch" path="res://Menu/MenuItems/SpaceInvadersMenuItem.tscn" id="4_w32jx"]
+[ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="5_w32jx"]
 
 [sub_resource type="Theme" id="Theme_e56cd"]
 VScrollBar/styles/grabber_pressed = null
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_crea4"]
+size = Vector2(1920, 1080)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -24,50 +27,88 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.321569, 1, 0.494118, 1)
+color = Color(0.321569, 1, 0.698039, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -576.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_e56cd")
-follow_focus = true
-
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Pacman" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_jf1j2")]
-layout_mode = 2
-
-[node name="MainMenu" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_crea4")]
-layout_mode = 2
-
-[node name="SpaceInvaders" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_w32jx")]
-layout_mode = 2
-
-[node name="LaunchButton" type="Button" parent="."]
+[node name="LaunchSceneContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
+offset_left = -114.0
+offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Laucnh Scene
-"
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
-[connection signal="pressed" from="LaunchButton" to="." method="_on_launch_button_pressed"]
+[node name="LaunchButton" type="Button" parent="LaunchSceneContainer"]
+layout_mode = 2
+text = "Launch Game"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_e56cd")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="ItemListContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Pacman" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("3_crea4")]
+layout_mode = 2
+
+[node name="Space Invaders" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("4_w32jx")]
+layout_mode = 2
+
+[node name="InfoMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 100
+
+[node name="InfoContainer" type="VBoxContainer" parent="HBoxContainer/InfoMarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="HBoxContainer/InfoMarginContainer/InfoContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Short description of the game
+This description gets deleted on start
+Extra, extra, extra long text to see line wrapping"
+label_settings = ExtResource("5_w32jx")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Screenshot" type="TextureRect" parent="HBoxContainer/InfoMarginContainer/InfoContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+texture = SubResource("PlaceholderTexture2D_crea4")
+expand_mode = 5
+
+[connection signal="pressed" from="LaunchSceneContainer/LaunchButton" to="." method="_on_launch_button_pressed"]

@@ -153,6 +153,8 @@ func move_player(delta: float):
 	
 	if Input.is_action_just_pressed("fire"):
 		player.fire()
+	if Input.is_action_just_pressed("go_to_main_menu"):
+		get_tree().change_scene_to_file("res://Menu/Menu.tscn")
 
 var move_delta_sum: float = 0
 var fire_delta_sum: float = 0
