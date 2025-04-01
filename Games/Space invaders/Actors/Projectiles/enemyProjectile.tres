@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://40oqyn236p4f"]
 
-[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="1_5fvw6"]
+[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/Ressources/space_invaders_sprite_sheet.png" id="1_5fvw6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31ead"]
 atlas = ExtResource("1_5fvw6")

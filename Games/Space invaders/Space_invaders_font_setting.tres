@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://pbnab3h6faew"]
-
-[ext_resource type="FontFile" uid="uid://dk85cuda1gkbc" path="res://Games/Space invaders/space-invaders-full-version.ttf" id="1_lybh2"]
-
-[resource]
-line_spacing = 16.0
-font = ExtResource("1_lybh2")

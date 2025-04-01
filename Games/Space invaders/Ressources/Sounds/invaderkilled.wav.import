@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c5smup4uqtekm"
-path="res://.godot/imported/invaderkilled.wav-601d1759393ede2d2f0ed179c13f7f6a.sample"
+path="res://.godot/imported/invaderkilled.wav-aa1940dce8929e45ed77330bbbc45d1d.sample"
 
 [deps]
 
-source_file="res://Games/Space invaders/Sounds/invaderkilled.wav"
-dest_files=["res://.godot/imported/invaderkilled.wav-601d1759393ede2d2f0ed179c13f7f6a.sample"]
+source_file="res://Games/Space invaders/Ressources/Sounds/invaderkilled.wav"
+dest_files=["res://.godot/imported/invaderkilled.wav-aa1940dce8929e45ed77330bbbc45d1d.sample"]
 
 [params]
 

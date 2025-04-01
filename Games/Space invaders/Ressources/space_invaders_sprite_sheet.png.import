@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqv526g600ls1"
-path="res://.godot/imported/space_invaders_sprite_sheet.png-b558fde723d009a6106d2b85eea37c2f.ctex"
+path="res://.godot/imported/space_invaders_sprite_sheet.png-68c91bc4bd6d0df49193667b75ea0249.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/Space invaders/space_invaders_sprite_sheet.png"
-dest_files=["res://.godot/imported/space_invaders_sprite_sheet.png-b558fde723d009a6106d2b85eea37c2f.ctex"]
+source_file="res://Games/Space invaders/Ressources/space_invaders_sprite_sheet.png"
+dest_files=["res://.godot/imported/space_invaders_sprite_sheet.png-68c91bc4bd6d0df49193667b75ea0249.ctex"]
 
 [params]
 

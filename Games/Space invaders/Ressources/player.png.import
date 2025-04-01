@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpsp4varspuo"
-path="res://.godot/imported/player.png-f7b22f972060dbcbd3b8b35a9287266a.ctex"
+path="res://.godot/imported/player.png-2a98fda45789f80786fade2fdc063709.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/Space invaders/player.png"
-dest_files=["res://.godot/imported/player.png-f7b22f972060dbcbd3b8b35a9287266a.ctex"]
+source_file="res://Games/Space invaders/Ressources/player.png"
+dest_files=["res://.godot/imported/player.png-2a98fda45789f80786fade2fdc063709.ctex"]
 
 [params]
 

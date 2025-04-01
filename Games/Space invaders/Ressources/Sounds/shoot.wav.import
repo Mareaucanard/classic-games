@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cmcm2fc017vjn"
-path="res://.godot/imported/shoot.wav-de0aa16ef64f48d338af40e881efe03a.sample"
+path="res://.godot/imported/shoot.wav-1f05d2f2485af22bb5cfb0ffbdf3ab3c.sample"
 
 [deps]
 
-source_file="res://Games/Space invaders/Sounds/shoot.wav"
-dest_files=["res://.godot/imported/shoot.wav-de0aa16ef64f48d338af40e881efe03a.sample"]
+source_file="res://Games/Space invaders/Ressources/Sounds/shoot.wav"
+dest_files=["res://.godot/imported/shoot.wav-1f05d2f2485af22bb5cfb0ffbdf3ab3c.sample"]
 
 [params]
 

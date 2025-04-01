@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://khvasflt5xu"]
 
 [ext_resource type="Script" uid="uid://bvm3p7hindtdq" path="res://Games/Space invaders/Actors/Characters/ufo.gd" id="1_6mx5o"]
-[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/space_invaders_sprite_sheet.png" id="2_crs3n"]
-[ext_resource type="AudioStream" uid="uid://diatwk70fy64f" path="res://Games/Space invaders/Sounds/ufo_highpitch.wav" id="3_keyce"]
+[ext_resource type="Texture2D" uid="uid://bqv526g600ls1" path="res://Games/Space invaders/Ressources/space_invaders_sprite_sheet.png" id="2_crs3n"]
+[ext_resource type="AudioStream" uid="uid://diatwk70fy64f" path="res://Games/Space invaders/Ressources/Sounds/ufo_highpitch.wav" id="3_keyce"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qnju"]
 atlas = ExtResource("2_crs3n")

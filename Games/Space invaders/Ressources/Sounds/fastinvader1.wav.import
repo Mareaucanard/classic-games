@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bgwe18ub06trq"
-path="res://.godot/imported/fastinvader1.wav-f165cb12a4f570d33863e87018f38993.sample"
+path="res://.godot/imported/fastinvader1.wav-ac32a84520a5d704cbca250d7e7f3729.sample"
 
 [deps]
 
-source_file="res://Games/Space invaders/Sounds/fastinvader1.wav"
-dest_files=["res://.godot/imported/fastinvader1.wav-f165cb12a4f570d33863e87018f38993.sample"]
+source_file="res://Games/Space invaders/Ressources/Sounds/fastinvader1.wav"
+dest_files=["res://.godot/imported/fastinvader1.wav-ac32a84520a5d704cbca250d7e7f3729.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://diatwk70fy64f"
-path="res://.godot/imported/ufo_highpitch.wav-dbc7f0917a098be9e7e2ade43d922976.sample"
+path="res://.godot/imported/ufo_highpitch.wav-ae0ed4f48d85557dcbe9433913427e76.sample"
 
 [deps]
 
-source_file="res://Games/Space invaders/Sounds/ufo_highpitch.wav"
-dest_files=["res://.godot/imported/ufo_highpitch.wav-dbc7f0917a098be9e7e2ade43d922976.sample"]
+source_file="res://Games/Space invaders/Ressources/Sounds/ufo_highpitch.wav"
+dest_files=["res://.godot/imported/ufo_highpitch.wav-ae0ed4f48d85557dcbe9433913427e76.sample"]
 
 [params]
 

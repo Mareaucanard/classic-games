@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2bhjvi7q3cch"]
 
 [ext_resource type="Script" uid="uid://dgmvbm4w8xdfi" path="res://Menu/menu_item.gd" id="1_s68i0"]
-[ext_resource type="PackedScene" uid="uid://6e85l8hf4kqq" path="res://Games/Space invaders/Levels/Level.tscn" id="2_s68i0"]
+[ext_resource type="PackedScene" uid="uid://6e85l8hf4kqq" path="res://Games/Space invaders/Levels/SpaceInvadersMainScene.tscn" id="2_s68i0"]
 [ext_resource type="Texture2D" uid="uid://d2mbu3rgywmum" path="res://Menu/MenuItems/Screenshots/SpaceInvaders.png" id="3_0uqmk"]
 [ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="3_jcpp2"]
 

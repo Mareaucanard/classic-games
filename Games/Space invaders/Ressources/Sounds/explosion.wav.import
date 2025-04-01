@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dtuwiilb75mbs"
-path="res://.godot/imported/explosion.wav-b3a11848c6920b2207a210ddac201607.sample"
+path="res://.godot/imported/explosion.wav-0fdcb94536232f6dadeb482a823914e8.sample"
 
 [deps]
 
-source_file="res://Games/Space invaders/Sounds/explosion.wav"
-dest_files=["res://.godot/imported/explosion.wav-b3a11848c6920b2207a210ddac201607.sample"]
+source_file="res://Games/Space invaders/Ressources/Sounds/explosion.wav"
+dest_files=["res://.godot/imported/explosion.wav-0fdcb94536232f6dadeb482a823914e8.sample"]
 
 [params]
 

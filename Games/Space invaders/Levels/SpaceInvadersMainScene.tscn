@@ -1,20 +1,20 @@
 [gd_scene load_steps=17 format=3 uid="uid://6e85l8hf4kqq"]
 
-[ext_resource type="Texture2D" uid="uid://oy74wfk2gd6n" path="res://white_square.png" id="1_1oi55"]
-[ext_resource type="Script" uid="uid://b8a6df2mxqwn3" path="res://Games/Space invaders/Levels/level.gd" id="1_xcvmt"]
-[ext_resource type="LabelSettings" uid="uid://pbnab3h6faew" path="res://Games/Space invaders/Space_invaders_font_setting.tres" id="2_vupjj"]
-[ext_resource type="Texture2D" uid="uid://cpsp4varspuo" path="res://Games/Space invaders/player.png" id="3_0reao"]
-[ext_resource type="PackedScene" uid="uid://dxb2msub8waur" path="res://Games/Space invaders/Actors/Characters/squid.tscn" id="3_dvffm"]
-[ext_resource type="PackedScene" uid="uid://ef6btmaer231" path="res://Games/Space invaders/Actors/Characters/crab.tscn" id="4_a65ve"]
-[ext_resource type="PackedScene" uid="uid://qcg5llrga63x" path="res://Games/Space invaders/Actors/Characters/enemy3.tscn" id="5_8tkfl"]
-[ext_resource type="PackedScene" uid="uid://bkf7sij8dg20i" path="res://Games/Space invaders/Actors/Characters/Player.tscn" id="6_uf654"]
-[ext_resource type="Script" uid="uid://bonkleip84sr6" path="res://Games/Space invaders/Levels/text_display.gd" id="8_egyod"]
-[ext_resource type="AudioStream" uid="uid://bgwe18ub06trq" path="res://Games/Space invaders/Sounds/fastinvader1.wav" id="10_em0k4"]
-[ext_resource type="AudioStream" uid="uid://d4gtypffqbcm0" path="res://Games/Space invaders/Sounds/fastinvader2.wav" id="11_0liju"]
-[ext_resource type="AudioStream" uid="uid://devl014kt1k8u" path="res://Games/Space invaders/Sounds/fastinvader3.wav" id="12_ikdyc"]
-[ext_resource type="AudioStream" uid="uid://h58rq8eho78n" path="res://Games/Space invaders/Sounds/fastinvader4.wav" id="13_g11cg"]
-[ext_resource type="AudioStream" uid="uid://c5smup4uqtekm" path="res://Games/Space invaders/Sounds/invaderkilled.wav" id="14_i85kq"]
-[ext_resource type="AudioStream" uid="uid://cmcm2fc017vjn" path="res://Games/Space invaders/Sounds/shoot.wav" id="15_p2pqj"]
+[ext_resource type="Script" uid="uid://b8a6df2mxqwn3" path="res://Games/Space invaders/Levels/MainScene.gd" id="1_60did"]
+[ext_resource type="PackedScene" uid="uid://ef6btmaer231" path="res://Games/Space invaders/Actors/Characters/crab.tscn" id="2_fy0de"]
+[ext_resource type="PackedScene" uid="uid://dxb2msub8waur" path="res://Games/Space invaders/Actors/Characters/squid.tscn" id="3_35yob"]
+[ext_resource type="PackedScene" uid="uid://qcg5llrga63x" path="res://Games/Space invaders/Actors/Characters/enemy3.tscn" id="4_ncmi3"]
+[ext_resource type="Texture2D" uid="uid://oy74wfk2gd6n" path="res://white_square.png" id="5_to0vl"]
+[ext_resource type="LabelSettings" uid="uid://pbnab3h6faew" path="res://Games/Space invaders/Ressources/Space_invaders_font_setting.tres" id="6_35hjo"]
+[ext_resource type="Texture2D" uid="uid://cpsp4varspuo" path="res://Games/Space invaders/Ressources/player.png" id="7_lwqw5"]
+[ext_resource type="Script" uid="uid://bonkleip84sr6" path="res://Games/Space invaders/Levels/text_display.gd" id="8_62hrb"]
+[ext_resource type="PackedScene" uid="uid://bkf7sij8dg20i" path="res://Games/Space invaders/Actors/Characters/Player.tscn" id="9_mq64e"]
+[ext_resource type="AudioStream" uid="uid://bgwe18ub06trq" path="res://Games/Space invaders/Ressources/Sounds/fastinvader1.wav" id="10_66t4t"]
+[ext_resource type="AudioStream" uid="uid://d4gtypffqbcm0" path="res://Games/Space invaders/Ressources/Sounds/fastinvader2.wav" id="11_rvs8f"]
+[ext_resource type="AudioStream" uid="uid://devl014kt1k8u" path="res://Games/Space invaders/Ressources/Sounds/fastinvader3.wav" id="12_lhrqe"]
+[ext_resource type="AudioStream" uid="uid://h58rq8eho78n" path="res://Games/Space invaders/Ressources/Sounds/fastinvader4.wav" id="13_2x6hl"]
+[ext_resource type="AudioStream" uid="uid://c5smup4uqtekm" path="res://Games/Space invaders/Ressources/Sounds/invaderkilled.wav" id="14_72alu"]
+[ext_resource type="AudioStream" uid="uid://cmcm2fc017vjn" path="res://Games/Space invaders/Ressources/Sounds/shoot.wav" id="15_gakh7"]
 
 [sub_resource type="Curve2D" id="Curve2D_j2y0o"]
 _data = {
@@ -23,11 +23,11 @@ _data = {
 point_count = 2
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_xcvmt")
+script = ExtResource("1_60did")
 x_offset = 33
-crab = ExtResource("4_a65ve")
-squid = ExtResource("3_dvffm")
-enemy3 = ExtResource("5_8tkfl")
+crab = ExtResource("2_fy0de")
+squid = ExtResource("3_35yob")
+enemy3 = ExtResource("4_ncmi3")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -46,7 +46,7 @@ offset_right = 242.25
 offset_bottom = 646.0
 grow_horizontal = 2
 size_flags_stretch_ratio = 20.0
-texture = ExtResource("1_1oi55")
+texture = ExtResource("5_to0vl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Background"]
 layout_mode = 1
@@ -63,7 +63,7 @@ alignment = 2
 self_modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 size_flags_vertical = 8
-texture = ExtResource("1_1oi55")
+texture = ExtResource("5_to0vl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Background/VBoxContainer"]
 layout_mode = 2
@@ -83,18 +83,18 @@ alignment = 1
 [node name="LivesCounter" type="Label" parent="UI/Background/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "3"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 
 [node name="Ship 1" type="TextureRect" parent="UI/Background/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 self_modulate = Color(0, 1, 0, 1)
 layout_mode = 2
-texture = ExtResource("3_0reao")
+texture = ExtResource("7_lwqw5")
 expand_mode = 3
 
 [node name="Ship 2" type="TextureRect" parent="UI/Background/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 self_modulate = Color(0, 1, 0, 1)
 layout_mode = 2
-texture = ExtResource("3_0reao")
+texture = ExtResource("7_lwqw5")
 expand_mode = 3
 
 [node name="CreditContainer" type="MarginContainer" parent="UI/Background/VBoxContainer/HBoxContainer"]
@@ -109,7 +109,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "CREDIT 00"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Background"]
 layout_mode = 1
@@ -125,13 +125,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 4
 text = "SCORE"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 
 [node name="ScoreLabel" type="Label" parent="UI/Background/HBoxContainer/Score"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "0000"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 
 [node name="Highscore" type="VBoxContainer" parent="UI/Background/HBoxContainer"]
 layout_mode = 2
@@ -141,13 +141,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 4
 text = "HIGHSCORE"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 
 [node name="ScoreLabel" type="Label" parent="UI/Background/HBoxContainer/Highscore"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "0000"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 
 [node name="GameOver" type="Label" parent="UI/Background"]
 layout_mode = 1
@@ -160,10 +160,10 @@ offset_right = 72.0
 offset_bottom = 107.0
 grow_horizontal = 2
 text = "GAME OVER"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 visible_characters = 0
 visible_ratio = 0.0
-script = ExtResource("8_egyod")
+script = ExtResource("8_62hrb")
 
 [node name="Pause" type="Label" parent="UI/Background"]
 layout_mode = 1
@@ -179,7 +179,7 @@ offset_bottom = -209.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "PAUSE"
-label_settings = ExtResource("2_vupjj")
+label_settings = ExtResource("6_35hjo")
 horizontal_alignment = 1
 
 [node name="AlienSpawn" type="Marker2D" parent="."]
@@ -197,29 +197,29 @@ position = Vector2(217, 0)
 progress = 217.0
 rotates = false
 
-[node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("6_uf654")]
+[node name="Player" parent="Path2D/PathFollow2D" instance=ExtResource("9_mq64e")]
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="InvadersMove" type="Node" parent="Audio"]
 
 [node name="Invader1" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("10_em0k4")
+stream = ExtResource("10_66t4t")
 
 [node name="Invader2" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("11_0liju")
+stream = ExtResource("11_rvs8f")
 
 [node name="Invader3" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("12_ikdyc")
+stream = ExtResource("12_lhrqe")
 
 [node name="Invader4" type="AudioStreamPlayer" parent="Audio/InvadersMove"]
-stream = ExtResource("13_g11cg")
+stream = ExtResource("13_2x6hl")
 
 [node name="Invaderkilled" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("14_i85kq")
+stream = ExtResource("14_72alu")
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("15_p2pqj")
+stream = ExtResource("15_gakh7")
 
 [connection signal="done" from="UI/Background/GameOver" to="." method="_on_game_over_done"]
 [connection signal="finish_hit_animation" from="Path2D/PathFollow2D/Player" to="." method="_on_player_finish_hit_animation"]
