@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bnyb3sre4554q"]
 
-[ext_resource type="Script" uid="uid://lcktbp7vmkii" path="res://Games/Pacman/Actors/pacman.gd" id="1_5os5w"]
+[ext_resource type="Script" uid="uid://lcktbp7vmkii" path="res://Games/Pacman/Actors/Pacman.gd" id="1_5os5w"]
 [ext_resource type="Texture2D" uid="uid://368eh2ec1d3i" path="res://Games/Pacman/Ressources/Arcade - Pac-Man - General Sprites.png" id="1_lqg7s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s780s"]
@@ -212,9 +212,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhs0h"]
-size = Vector2(28, 28)
+size = Vector2(30, 30)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_max_angle = 3.14159

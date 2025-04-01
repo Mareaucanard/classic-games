@@ -26,8 +26,12 @@ folder_colors={
 "res://Games/Pacman/Ressources/": "teal",
 "res://Games/Space invaders/Actors/": "red",
 "res://Games/Space invaders/Levels/": "green",
-"res://Games/Space invaders/Sounds/": "teal"
+"res://Games/Space invaders/Ressources/": "teal"
 }
+
+[global_group]
+
+PacmanPellet=""
 
 [input]
 

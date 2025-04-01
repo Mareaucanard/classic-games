@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://big407jcu4eev"]
 
 [ext_resource type="Script" uid="uid://dgmvbm4w8xdfi" path="res://Menu/menu_item.gd" id="1_2g2fe"]
-[ext_resource type="PackedScene" uid="uid://cvyuyc4njsht1" path="res://Games/Pacman/Level.tscn" id="2_2g2fe"]
+[ext_resource type="PackedScene" uid="uid://cvyuyc4njsht1" path="res://Games/Pacman/PacmanMainScene.tscn" id="2_2g2fe"]
 [ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="3_n6bo1"]
 [ext_resource type="Texture2D" uid="uid://bdjfusfld2u6l" path="res://Menu/MenuItems/Screenshots/Pacman.png" id="3_uyom8"]
 
