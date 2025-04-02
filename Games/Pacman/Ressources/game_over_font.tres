@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dclw25wit3v58"]
+
+[ext_resource type="FontFile" uid="uid://c0tc2qe7i4031" path="res://Games/Pacman/Ressources/Emulogic.ttf" id="1_h8j8i"]
+
+[resource]
+font = ExtResource("1_h8j8i")
+font_color = Color(1, 0, 0, 1)

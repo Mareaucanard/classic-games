@@ -212,21 +212,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhs0h"]
-size = Vector2(30, 30)
+size = Vector2(28, 28)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_max_angle = 3.14159
-floor_snap_length = 0.0
+floor_snap_length = 0.8
+safe_margin = 0.02
 script = ExtResource("1_5os5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.6, 2.6)
 sprite_frames = SubResource("SpriteFrames_c2ljp")
-animation = &"down"
-frame_progress = 0.49797
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fhs0h")

@@ -2,12 +2,13 @@ extends CharacterBody2D
 class_name PacmanPlayer
 
 var speed = 200
+var alive = true
 @onready var sprite = $AnimatedSprite2D
 
+signal died(PacmanPlayer)
 
 func _ready() -> void:
 	pass
-
 
 # Pacman can only can in 4 directions, so no diagonals
 func handle_direction_input():
@@ -32,11 +33,23 @@ func handle_direction_input():
 	sprite.play("spawning")
 
 func handle_wrapping():
+	position.x = round(position.x)
+	position.y = round(position.y)
 	if position.x < 310:
 		position.x += 520
 	if position.x > 840:
 		position.x -= 520
 
+func freeze_anim():
+	$AnimatedSprite2D.pause()
+
+func respawn():
+	$AnimatedSprite2D.play("spawning")
+
+func play_death_animation():
+	$AnimatedSprite2D.play("death")
+
 func _physics_process(delta: float) -> void:
-	handle_direction_input()
-	handle_wrapping()
+	if alive:
+		handle_direction_input()
+		handle_wrapping()

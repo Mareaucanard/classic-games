@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvyuyc4njsht1"]
+[gd_scene load_steps=14 format=3 uid="uid://cvyuyc4njsht1"]
 
 [ext_resource type="Script" uid="uid://blayil40peqjc" path="res://Games/Pacman/pacman_main_scene.gd" id="1_drnoc"]
 [ext_resource type="Texture2D" uid="uid://368eh2ec1d3i" path="res://Games/Pacman/Ressources/Arcade - Pac-Man - General Sprites.png" id="1_u82o0"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bnyb3sre4554q" path="res://Games/Pacman/Actors/Pacman.tscn" id="3_d8bi4"]
 [ext_resource type="PackedScene" uid="uid://yd6wvdlb15ua" path="res://Games/Pacman/Actors/SmallPellet.tscn" id="4_eomra"]
 [ext_resource type="PackedScene" uid="uid://bf0ibqxjwhcdr" path="res://Games/Pacman/Actors/BigPellet.tscn" id="5_wv6tw"]
+[ext_resource type="LabelSettings" uid="uid://dclw25wit3v58" path="res://Games/Pacman/Ressources/game_over_font.tres" id="7_apols"]
+[ext_resource type="FontFile" uid="uid://c0tc2qe7i4031" path="res://Games/Pacman/Ressources/Emulogic.ttf" id="8_84wjn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drnoc"]
 atlas = ExtResource("1_u82o0")
@@ -37,6 +39,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_cibil"]
+font = ExtResource("8_84wjn")
+font_color = Color(1, 1, 0, 1)
+
 [node name="PacmanMainScene" type="Node2D"]
 script = ExtResource("1_drnoc")
 
@@ -67,6 +73,7 @@ offset_bottom = 9.0
 color = Color(0, 0, 0, 1)
 
 [node name="Maze" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
 position = Vector2(575, 324)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yrlfn")
@@ -175,9 +182,10 @@ sprite_frames = SubResource("SpriteFrames_offgi")
 position = Vector2(408, 0)
 
 [node name="Pacman" parent="." instance=ExtResource("3_d8bi4")]
-position = Vector2(502, 190)
+position = Vector2(410, 164)
 
 [node name="Walls" type="Node2D" parent="."]
+visible = false
 
 [node name="T-Shaped" type="Node2D" parent="Walls"]
 
@@ -1263,3 +1271,57 @@ position = Vector2(774, 452)
 
 [node name="BottomRight" parent="Pellets/BigPellets" instance=ExtResource("5_wv6tw")]
 position = Vector2(374, 452)
+
+[node name="PacmanSpawn" type="Marker2D" parent="."]
+position = Vector2(574, 451)
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 340.0
+offset_right = 652.0
+offset_bottom = 372.0
+
+[node name="Game" type="Label" parent="GameOver/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "GAME"
+label_settings = ExtResource("7_apols")
+
+[node name="Over" type="Label" parent="GameOver/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "OVER"
+label_settings = ExtResource("7_apols")
+
+[node name="Ready" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 496.0
+offset_top = 340.0
+offset_right = 652.0
+offset_bottom = 372.0
+
+[node name="Label" type="Label" parent="Ready"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -10.0
+offset_right = 48.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "READY!"
+label_settings = SubResource("LabelSettings_cibil")

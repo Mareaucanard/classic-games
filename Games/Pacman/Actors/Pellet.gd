@@ -6,6 +6,17 @@ signal got_eaten(PacmanPellet)
 
 var enabled = true
 
+func _ready() -> void:
+	$AnimatedSprite2D.play("default")
+
+func pause_anim():
+	$AnimatedSprite2D.pause()
+	$AnimatedSprite2D.frame = 0
+
+func resume_anim():
+	$AnimatedSprite2D.play("default")
+	
+
 func is_big_pellet() -> bool:
 	return BigPellet
 

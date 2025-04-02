@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf0ibqxjwhcdr"]
+[gd_scene load_steps=7 format=3 uid="uid://bf0ibqxjwhcdr"]
 
 [ext_resource type="Script" uid="uid://dm706qx4xvn15" path="res://Games/Pacman/Actors/Pellet.gd" id="1_8euua"]
 [ext_resource type="Texture2D" uid="uid://368eh2ec1d3i" path="res://Games/Pacman/Ressources/Arcade - Pac-Man - General Sprites.png" id="1_do7l6"]
@@ -7,15 +7,22 @@
 atlas = ExtResource("1_do7l6")
 region = Rect2(8, 24, 8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8euua"]
+atlas = ExtResource("1_do7l6")
+region = Rect2(110, 111, 1, 1)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8euua"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_do7l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8euua")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1you"]
@@ -30,6 +37,7 @@ BigPellet = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8euua")
+frame_progress = 0.941209
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k1you")
