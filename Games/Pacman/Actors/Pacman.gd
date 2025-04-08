@@ -5,13 +5,11 @@ var speed = 200
 var alive = true
 @onready var sprite = $AnimatedSprite2D
 
-signal died(PacmanPlayer)
-
 func _ready() -> void:
 	pass
 
 # Pacman can only can in 4 directions, so no diagonals
-func handle_direction_input():
+func handle_direction_input(delta: float):
 	var direction_string = [
 		["up", Vector2.UP],
 		["right", Vector2.RIGHT],
@@ -23,10 +21,10 @@ func handle_direction_input():
 		var dir_vec = item[1]
 		if Input.is_action_pressed(dir_name):
 			var pos_before: Vector2 = position
-			velocity = dir_vec * speed
+			velocity = dir_vec * speed * delta * 60
 			move_and_slide()
 			var distance_moved = position.distance_to(pos_before)
-			if distance_moved >= 1:
+			if distance_moved >= 1 * delta:
 				sprite.play(dir_name)
 				return
 	velocity = Vector2.ZERO
@@ -51,5 +49,5 @@ func play_death_animation():
 
 func _physics_process(delta: float) -> void:
 	if alive:
-		handle_direction_input()
+		handle_direction_input(delta)
 		handle_wrapping()
