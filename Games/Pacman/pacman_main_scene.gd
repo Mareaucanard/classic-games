@@ -4,7 +4,7 @@ extends Node2D
 @onready var HighscoreLabel = $GameZone/ScoreUI/HighscoreVbox/Score
 @onready var LivesUI := $GameZone/BottomUI/HBoxContainer.get_children()
 @onready var Maze = $Maze
-@onready var ghosts: Array[PacmanGhost] = [$Ghosts/Clyde, $Ghosts/Blinky, $Ghosts/Pinky,]
+@onready var ghosts: Array[PacmanGhost] = [$Ghosts/Clyde, $Ghosts/Blinky, $Ghosts/Pinky, $Ghosts/Inky]
 var score = 0
 var highscore = 0
 var lives = 5
@@ -15,11 +15,7 @@ func reset_game():
 	score = 0
 	ScoreLabel.text = str(score)
 	for ghost in ghosts:
-		ghost.game_area_origin = $Navigation/TopLeft.global_position
-		var width = $Navigation/TopRight.global_position.x - $Navigation/TopLeft.global_position.x
-		var height = $Navigation/BottomLeft.global_position.y - $Navigation/TopLeft.global_position.y
-		ghost.game_area_size = Vector2(width, height)
-		ghost.pacman = $Pacman
+		ghost.global_position = ghost.spawn_point
 	update_lives()
 	respawn_pacman()
 	
@@ -34,6 +30,16 @@ func update_lives():
 			life.visible = false
 
 func _ready() -> void:
+	for ghost in ghosts:
+		ghost.game_area_origin = $Navigation/TopLeft.global_position
+		var width = $Navigation/TopRight.global_position.x - $Navigation/TopLeft.global_position.x
+		var height = $Navigation/BottomLeft.global_position.y - $Navigation/TopLeft.global_position.y
+		ghost.game_area_size = Vector2(width, height)
+		ghost.pacman = $Pacman
+		ghost.blinky = $Ghosts/Blinky
+		ghost.running = true
+		ghost.spawn_point = ghost.global_position
+		ghost.killed_player.connect(_on_pacman_death)
 	connect_pellets_signals()
 	reset_game()
 	HighscoreLabel.text = str(highscore)
@@ -45,9 +51,10 @@ func all_pellets_go_eaten() -> bool:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
-		_on_pacman_death($Pacman)
+		_on_pacman_death()
 	if Input.is_action_just_pressed("hard_mode"):
-		$Clyde.state = $Clyde.state_enum.SCATTER
+		for pellet in get_tree().get_nodes_in_group("PacmanPellet"):
+			pellet._on_body_entered($Pacman)
 
 func apply_to_pellets(method_name: StringName):
 	get_tree().call_group("PacmanPellet", method_name)
@@ -62,11 +69,14 @@ func connect_pellets_signals():
 	for pellet in get_tree().get_nodes_in_group("PacmanPellet"):
 		pellet.got_eaten.connect(on_pellet_got_eaten)
 
-func _on_pacman_death(pacman: PacmanPlayer):
-	pacman.alive = false
-	pacman.freeze_anim()
+func _on_pacman_death():
+	print("On Pacman Death")
+	for ghost in ghosts:
+		ghost.running = false
+	$Pacman.alive = false
+	$Pacman.freeze_anim()
 	await get_tree().create_timer(1).timeout
-	pacman.play_death_animation()
+	$Pacman.play_death_animation()
 	await get_tree().create_timer(11.0 / 10.0).timeout
 	lives -= 1
 	update_lives()
@@ -80,11 +90,16 @@ func _on_pacman_death(pacman: PacmanPlayer):
 func respawn_pacman():
 	$Pacman.global_position = $PacmanSpawn.global_position
 	$Pacman.alive = false
+	for ghost in ghosts:
+		ghost.global_position = ghost.spawn_point
+		ghost.visible = true
 	$Pacman.respawn()
 	$Ready.visible = true
 	await get_tree().create_timer(1).timeout
 	$Ready.visible = false
 	$Pacman.alive = true
+	for ghost in ghosts:
+		ghost.running = true
 	
 	
 
@@ -104,6 +119,11 @@ func game_over():
 
 func victory():
 	$Pacman.alive = false
+	for ghost in ghosts:
+		ghost.running = false
+	await get_tree().create_timer(1.5).timeout
+	for ghost in ghosts:
+		ghost.visible = false
 	for i in range(10):
 		if i % 2 == 1:
 			Maze.modulate = Color(0, 0, 255)

@@ -1,7 +1,7 @@
 extends Area2D
 class_name PacmanGhost
 
-var speed = 100
+var speed = 1
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 var game_area_origin: Vector2
 var game_area_size: Vector2
@@ -11,10 +11,14 @@ enum state_enum {EATEN, SCATTER, CHASING, VULNERABLE}
 
 @export var ghost: ghost_enum
 var state: state_enum = state_enum.CHASING
+
+var running = false
+var spawn_point: Vector2 
 var pacman: PacmanPlayer
 var blinky: PacmanGhost
 
-signal colided_with_player(Ghost)
+
+signal killed_player()
 
 func handle_chase():
 	if ghost == ghost_enum.CLYDE:
@@ -29,8 +33,8 @@ func handle_chase():
 	elif ghost == ghost_enum.PINKY:
 		nav.target_position = pacman.position + pacman.facing_dir * 16 * 4
 	elif ghost == ghost_enum.INKY:
-		pass
-	
+		var blinky_diff = pacman.position - blinky.position
+		nav.target_position = blinky.position + blinky_diff * 2
 
 func handle_target_position():
 	if state == state_enum.CHASING:
@@ -64,11 +68,10 @@ func handle_animation(dir: Vector2):
 		$AnimatedSprite2D.play("scatter")
 	else:
 		$AnimatedSprite2D.play(get_vector_dir(dir))
-		
-	
-	
 
 func _physics_process(delta: float) -> void:
+	if not running:
+		return
 	var direction = Vector2()
 	
 	handle_target_position()
@@ -81,4 +84,6 @@ func _physics_process(delta: float) -> void:
 		position += mov
 
 func _on_body_entered(body: Node2D) -> void:
-	colided_with_player.emit(self)
+	print("Hi!")
+	killed_player.emit()
+	print("Emited")

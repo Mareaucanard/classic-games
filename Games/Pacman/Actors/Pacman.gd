@@ -5,6 +5,7 @@ var speed = 200
 var alive = true
 var facing_dir = Vector2.ZERO
 @onready var sprite = $AnimatedSprite2D
+@onready var nav = $NavigationAgent2D
 
 func _ready() -> void:
 	pass
@@ -21,13 +22,13 @@ func handle_direction_input(delta: float):
 		var dir_name = item[0]
 		var dir_vec = item[1]
 		if Input.is_action_pressed(dir_name):
-			var pos_before: Vector2 = position
-			velocity = dir_vec * speed * delta * 60
-			move_and_slide()
-			var distance_moved = position.distance_to(pos_before)
-			if distance_moved >= 1 * delta:
-				sprite.play(dir_name)
-				facing_dir = dir_vec
+			nav.target_position = position + dir_vec * 20
+			if not nav.is_navigation_finished():
+				$AnimatedSprite2D.play(dir_name)
+				var direction = nav.get_next_path_position() - global_position
+				direction = direction.normalized()
+				var mov = direction * speed * delta
+				position += mov
 				return
 	velocity = Vector2.ZERO
 	facing_dir = Vector2.ZERO
