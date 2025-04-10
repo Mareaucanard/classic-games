@@ -4,6 +4,7 @@ extends Node2D
 @onready var HighscoreLabel = $GameZone/ScoreUI/HighscoreVbox/Score
 @onready var LivesUI := $GameZone/BottomUI/HBoxContainer.get_children()
 @onready var Maze = $Maze
+@onready var ghosts: Array[PacmanGhost] = [$Ghosts/Clyde, $Ghosts/Blinky, $Ghosts/Pinky,]
 var score = 0
 var highscore = 0
 var lives = 5
@@ -13,6 +14,12 @@ func reset_game():
 	lives = 1
 	score = 0
 	ScoreLabel.text = str(score)
+	for ghost in ghosts:
+		ghost.game_area_origin = $Navigation/TopLeft.global_position
+		var width = $Navigation/TopRight.global_position.x - $Navigation/TopLeft.global_position.x
+		var height = $Navigation/BottomLeft.global_position.y - $Navigation/TopLeft.global_position.y
+		ghost.game_area_size = Vector2(width, height)
+		ghost.pacman = $Pacman
 	update_lives()
 	respawn_pacman()
 	
@@ -40,9 +47,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		_on_pacman_death($Pacman)
 	if Input.is_action_just_pressed("hard_mode"):
-		for pellet in get_tree().get_nodes_in_group("PacmanPellet"):
-			var p1: PacmanPellet = pellet
-			p1._on_body_entered($Pacman)
+		$Clyde.state = $Clyde.state_enum.SCATTER
 
 func apply_to_pellets(method_name: StringName):
 	get_tree().call_group("PacmanPellet", method_name)

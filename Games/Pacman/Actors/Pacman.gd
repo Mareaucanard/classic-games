@@ -3,6 +3,7 @@ class_name PacmanPlayer
 
 var speed = 200
 var alive = true
+var facing_dir = Vector2.ZERO
 @onready var sprite = $AnimatedSprite2D
 
 func _ready() -> void:
@@ -26,8 +27,10 @@ func handle_direction_input(delta: float):
 			var distance_moved = position.distance_to(pos_before)
 			if distance_moved >= 1 * delta:
 				sprite.play(dir_name)
+				facing_dir = dir_vec
 				return
 	velocity = Vector2.ZERO
+	facing_dir = Vector2.ZERO
 	sprite.play("spawning")
 
 func handle_wrapping():
