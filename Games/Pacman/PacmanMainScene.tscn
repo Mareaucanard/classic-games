@@ -1392,3 +1392,8 @@ position = Vector2(574, 310)
 
 [node name="Inky" parent="Ghosts" instance=ExtResource("12_1qih5")]
 position = Vector2(542, 310)
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="GhostsVulnerability" type="Timer" parent="Timers"]
+wait_time = 10.0

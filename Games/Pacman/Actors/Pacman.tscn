@@ -226,9 +226,10 @@ safe_margin = 0.02
 script = ExtResource("1_5os5w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.6, 2.6)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_c2ljp")
 animation = &"death"
+frame_progress = 0.0533384
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fhs0h")

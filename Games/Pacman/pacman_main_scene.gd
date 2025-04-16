@@ -134,6 +134,8 @@ func victory():
 	enable_all_pellets()
 
 func on_pellet_got_eaten(pellet: PacmanPellet):
+	if pellet.is_big_pellet():
+		$Timers/GhostsVulnerability.start()
 	score += pellet.get_score()
 	ScoreLabel.text = str(score)
 	if all_pellets_go_eaten():
