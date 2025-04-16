@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name PacmanPlayer
 
-var speed = 200
+var speed = 150
 var alive = true
 var facing_dir = Vector2.ZERO
 @onready var sprite = $AnimatedSprite2D

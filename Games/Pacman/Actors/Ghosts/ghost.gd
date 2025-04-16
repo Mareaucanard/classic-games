@@ -1,7 +1,7 @@
 extends Area2D
 class_name PacmanGhost
 
-var speed = 1
+var speed = 100
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 var game_area_origin: Vector2
 var game_area_size: Vector2
@@ -13,12 +13,22 @@ enum state_enum {EATEN, SCATTER, CHASING, VULNERABLE}
 var state: state_enum = state_enum.CHASING
 
 var running = false
-var spawn_point: Vector2 
+var spawn_animation: String
+var spawn_point: Vector2
+var respawn_point: Vector2
 var pacman: PacmanPlayer
 var blinky: PacmanGhost
 
 
 signal killed_player()
+signal eaten(PacmanGhost)
+
+func _ready() -> void:
+	spawn_animation = $AnimatedSprite2D.animation
+
+func reset_anim():
+	$AnimatedSprite2D.play(spawn_animation)
+	nav.target_position = spawn_point
 
 func handle_chase():
 	if ghost == ghost_enum.CLYDE:
@@ -40,8 +50,11 @@ func handle_target_position():
 	if state == state_enum.CHASING:
 		handle_chase()
 	elif state == state_enum.SCATTER:
-		if ghost == ghost_enum.CLYDE:
-			nav.target_position = game_area_origin
+		nav.target_position = game_area_origin
+	elif state == state_enum.VULNERABLE:
+		nav.target_position = position + position - pacman.position
+	elif state == state_enum.EATEN:
+		nav.target_position = respawn_point
 
 func get_vector_dir(vec: Vector2) -> String:
 	var directions_vectors := [
@@ -64,7 +77,7 @@ func get_vector_dir(vec: Vector2) -> String:
 func handle_animation(dir: Vector2):
 	if state == state_enum.EATEN:
 		$AnimatedSprite2D.play("eyes_" + get_vector_dir(dir))
-	elif state == state_enum.SCATTER:
+	elif state == state_enum.VULNERABLE:
 		$AnimatedSprite2D.play("scatter")
 	else:
 		$AnimatedSprite2D.play(get_vector_dir(dir))
@@ -78,12 +91,16 @@ func _physics_process(delta: float) -> void:
 	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
 	handle_animation(direction)
-			
+	
 	if not nav.is_navigation_finished():
 		var mov = direction * speed * delta
 		position += mov
+	elif state == state_enum.EATEN:
+		state = state_enum.CHASING
+		
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Hi!")
-	killed_player.emit()
-	print("Emited")
+	if state == state_enum.CHASING or state == state_enum.SCATTER:
+		killed_player.emit()
+	elif state == state_enum.VULNERABLE:
+		eaten.emit(self)

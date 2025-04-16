@@ -209,5 +209,6 @@ path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_max_distance = 1000.0
 path_postprocessing = 2
+debug_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

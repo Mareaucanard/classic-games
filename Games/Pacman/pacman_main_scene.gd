@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var GhostEatenText: PackedScene
 @onready var ScoreLabel = $GameZone/ScoreUI/ScoreVbox/Score
 @onready var HighscoreLabel = $GameZone/ScoreUI/HighscoreVbox/Score
 @onready var LivesUI := $GameZone/BottomUI/HBoxContainer.get_children()
@@ -9,9 +10,13 @@ var score = 0
 var highscore = 0
 var lives = 5
 
+var ghosts_vulnerable = false
+var ghost_eaten_counter = 0
+
+
 func reset_game():
 	enable_all_pellets()
-	lives = 1
+	lives = 5
 	score = 0
 	ScoreLabel.text = str(score)
 	for ghost in ghosts:
@@ -30,8 +35,13 @@ func update_lives():
 			life.visible = false
 
 func _ready() -> void:
+	var data = SaveUtils.read_data()
+	if "PacmanHighscore" in data:
+		highscore = data["PacmanHighscore"]
+		HighscoreLabel.text = highscore
 	for ghost in ghosts:
 		ghost.game_area_origin = $Navigation/TopLeft.global_position
+		ghost.respawn_point = $Navigation/Respawn.global_position
 		var width = $Navigation/TopRight.global_position.x - $Navigation/TopLeft.global_position.x
 		var height = $Navigation/BottomLeft.global_position.y - $Navigation/TopLeft.global_position.y
 		ghost.game_area_size = Vector2(width, height)
@@ -40,6 +50,7 @@ func _ready() -> void:
 		ghost.running = true
 		ghost.spawn_point = ghost.global_position
 		ghost.killed_player.connect(_on_pacman_death)
+		ghost.eaten.connect(_on_ghost_eaten)
 	connect_pellets_signals()
 	reset_game()
 	HighscoreLabel.text = str(highscore)
@@ -50,11 +61,13 @@ func all_pellets_go_eaten() -> bool:
 	return pellets.all(func (pellet: PacmanPellet): return not pellet.is_enabled())
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("fire"):
-		_on_pacman_death()
-	if Input.is_action_just_pressed("hard_mode"):
-		for pellet in get_tree().get_nodes_in_group("PacmanPellet"):
-			pellet._on_body_entered($Pacman)
+	if Input.is_action_just_pressed("go_to_main_menu"):
+		if score > highscore:
+			highscore = score
+			HighscoreLabel.text = str(highscore)
+			SaveUtils.save_data(SaveUtils.save_data({"PacmanHighscore": highscore}))
+		get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+
 
 func apply_to_pellets(method_name: StringName):
 	get_tree().call_group("PacmanPellet", method_name)
@@ -68,6 +81,19 @@ func disable_all_pellets():
 func connect_pellets_signals():
 	for pellet in get_tree().get_nodes_in_group("PacmanPellet"):
 		pellet.got_eaten.connect(on_pellet_got_eaten)
+
+func _on_ghost_eaten(ghost: PacmanGhost):
+	ghost.state = ghost.state_enum.EATEN
+	ghost_eaten_counter += 1
+	var points = 200 * 2 ** ghost_eaten_counter
+	score += points
+	ScoreLabel.text = str(score)
+	var text = GhostEatenText.instantiate()
+	text.position = ghost.position + Vector2(0, -5)
+	text.set_text(str(points))
+	add_child(text)
+	
+	
 
 func _on_pacman_death():
 	print("On Pacman Death")
@@ -88,11 +114,15 @@ func _on_pacman_death():
 
 
 func respawn_pacman():
+	ghosts_vulnerable = false
+	$Timers/GhostsVulnerability.stop()
 	$Pacman.global_position = $PacmanSpawn.global_position
 	$Pacman.alive = false
 	for ghost in ghosts:
 		ghost.global_position = ghost.spawn_point
 		ghost.visible = true
+		ghost.running = false
+		ghost.state = ghost.state_enum.CHASING
 	$Pacman.respawn()
 	$Ready.visible = true
 	await get_tree().create_timer(1).timeout
@@ -109,8 +139,10 @@ func game_over():
 	$GameOver.visible = true
 	apply_to_pellets("pause_anim")
 	await get_tree().create_timer(0.5).timeout
-	highscore = score
-	HighscoreLabel.text = str(highscore)
+	if score > highscore:
+		highscore = score
+		HighscoreLabel.text = str(highscore)
+		SaveUtils.save_data(SaveUtils.save_data({"PacmanHighscore": highscore}))
 	await get_tree().create_timer(1.5).timeout
 	reset_game()
 	$Pacman.visible = true
@@ -119,6 +151,7 @@ func game_over():
 
 func victory():
 	$Pacman.alive = false
+	$Pacman.freeze_anim()
 	for ghost in ghosts:
 		ghost.running = false
 	await get_tree().create_timer(1.5).timeout
@@ -136,7 +169,19 @@ func victory():
 func on_pellet_got_eaten(pellet: PacmanPellet):
 	if pellet.is_big_pellet():
 		$Timers/GhostsVulnerability.start()
+		ghosts_vulnerable = true
+		for ghost in ghosts:
+			if ghost.state == ghost.state_enum.CHASING:
+				ghost.state = ghost.state_enum.VULNERABLE
 	score += pellet.get_score()
 	ScoreLabel.text = str(score)
 	if all_pellets_go_eaten():
 		victory()
+
+
+func _on_ghosts_vulnerability_timeout() -> void:
+	ghost_eaten_counter = 0
+	
+	for ghost in ghosts:
+		if ghost.state == ghost.state_enum.VULNERABLE:
+			ghost.state = ghost.state_enum.CHASING
