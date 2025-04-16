@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name PacmanPlayer
 
-var speed = 150
+var speed = 130
 var alive = true
 var facing_dir = Vector2.ZERO
 @onready var sprite = $AnimatedSprite2D
@@ -50,6 +50,7 @@ func respawn():
 
 func play_death_animation():
 	$AnimatedSprite2D.play("death")
+	$PacmanDeath.play()
 
 func _physics_process(delta: float) -> void:
 	if alive:

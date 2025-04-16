@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bnyb3sre4554q"]
+[gd_scene load_steps=28 format=3 uid="uid://bnyb3sre4554q"]
 
 [ext_resource type="Script" uid="uid://lcktbp7vmkii" path="res://Games/Pacman/Actors/Pacman.gd" id="1_5os5w"]
 [ext_resource type="Texture2D" uid="uid://368eh2ec1d3i" path="res://Games/Pacman/Ressources/Arcade - Pac-Man - General Sprites.png" id="1_lqg7s"]
+[ext_resource type="AudioStream" uid="uid://bjgqs1ih6o47t" path="res://Games/Pacman/Ressources/Audio/pacman_death.wav" id="3_33sg8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s780s"]
 atlas = ExtResource("1_lqg7s")
@@ -212,7 +213,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhs0h"]
-size = Vector2(28, 28)
+size = Vector2(22, 22)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -239,3 +240,6 @@ path_desired_distance = 1.0
 path_max_distance = 1000.0
 path_postprocessing = 2
 debug_enabled = true
+
+[node name="PacmanDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_33sg8")

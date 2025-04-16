@@ -6,9 +6,11 @@ extends Node2D
 @onready var LivesUI := $GameZone/BottomUI/HBoxContainer.get_children()
 @onready var Maze = $Maze
 @onready var ghosts: Array[PacmanGhost] = [$Ghosts/Clyde, $Ghosts/Blinky, $Ghosts/Pinky, $Ghosts/Inky]
-var score = 0
-var highscore = 0
+var score: int = 0
+var highscore: int = 0
 var lives = 5
+
+var munch_metronome = false
 
 var ghosts_vulnerable = false
 var ghost_eaten_counter = 0
@@ -16,7 +18,7 @@ var ghost_eaten_counter = 0
 
 func reset_game():
 	enable_all_pellets()
-	lives = 5
+	lives = 0
 	score = 0
 	ScoreLabel.text = str(score)
 	for ghost in ghosts:
@@ -38,7 +40,7 @@ func _ready() -> void:
 	var data = SaveUtils.read_data()
 	if "PacmanHighscore" in data:
 		highscore = data["PacmanHighscore"]
-		HighscoreLabel.text = highscore
+		HighscoreLabel.text = str(highscore)
 	for ghost in ghosts:
 		ghost.game_area_origin = $Navigation/TopLeft.global_position
 		ghost.respawn_point = $Navigation/Respawn.global_position
@@ -65,7 +67,7 @@ func _process(delta: float) -> void:
 		if score > highscore:
 			highscore = score
 			HighscoreLabel.text = str(highscore)
-			SaveUtils.save_data(SaveUtils.save_data({"PacmanHighscore": highscore}))
+			SaveUtils.save_data({"PacmanHighscore": highscore})
 		get_tree().change_scene_to_file("res://Menu/Menu.tscn")
 
 
@@ -83,6 +85,7 @@ func connect_pellets_signals():
 		pellet.got_eaten.connect(on_pellet_got_eaten)
 
 func _on_ghost_eaten(ghost: PacmanGhost):
+	$Sounds/PacmanEatghost.play()
 	ghost.state = ghost.state_enum.EATEN
 	ghost_eaten_counter += 1
 	var points = 200 * 2 ** ghost_eaten_counter
@@ -96,7 +99,6 @@ func _on_ghost_eaten(ghost: PacmanGhost):
 	
 
 func _on_pacman_death():
-	print("On Pacman Death")
 	for ghost in ghosts:
 		ghost.running = false
 	$Pacman.alive = false
@@ -104,6 +106,8 @@ func _on_pacman_death():
 	await get_tree().create_timer(1).timeout
 	$Pacman.play_death_animation()
 	await get_tree().create_timer(11.0 / 10.0).timeout
+	$Pacman.freeze_anim()
+	await get_tree().create_timer(1).timeout
 	lives -= 1
 	update_lives()
 	if lives < 0:
@@ -125,7 +129,8 @@ func respawn_pacman():
 		ghost.state = ghost.state_enum.CHASING
 	$Pacman.respawn()
 	$Ready.visible = true
-	await get_tree().create_timer(1).timeout
+	$Sounds/PacmanBeginning.play()
+	await get_tree().create_timer(4.22).timeout
 	$Ready.visible = false
 	$Pacman.alive = true
 	for ghost in ghosts:
@@ -142,7 +147,7 @@ func game_over():
 	if score > highscore:
 		highscore = score
 		HighscoreLabel.text = str(highscore)
-		SaveUtils.save_data(SaveUtils.save_data({"PacmanHighscore": highscore}))
+		SaveUtils.save_data({"PacmanHighscore": highscore})
 	await get_tree().create_timer(1.5).timeout
 	reset_game()
 	$Pacman.visible = true
@@ -167,6 +172,11 @@ func victory():
 	enable_all_pellets()
 
 func on_pellet_got_eaten(pellet: PacmanPellet):
+	if munch_metronome:
+		$Sounds/Munch1.play()
+	else:
+		$Sounds/Munch2.play()
+	munch_metronome = !munch_metronome
 	if pellet.is_big_pellet():
 		$Timers/GhostsVulnerability.start()
 		ghosts_vulnerable = true
