@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://qiselw0xmb3g" path="res://Games/Pacman/Ressources/Audio/pacman_beginning.wav" id="14_as1mw"]
 [ext_resource type="AudioStream" uid="uid://cdl78ym57wt51" path="res://Games/Pacman/Ressources/Audio/Munch_1.wav" id="15_e4mnu"]
 [ext_resource type="AudioStream" uid="uid://dwcakndtlj8h5" path="res://Games/Pacman/Ressources/Audio/Munch_2.wav" id="16_7wngl"]
-[ext_resource type="AudioStream" uid="uid://du261eqb12rqf" path="res://Games/Pacman/Ressources/Audio/pacman_eatghost.wav" id="17_7wngl"]
+[ext_resource type="AudioStream" uid="uid://bevd8t4b74q2l" path="res://Games/Pacman/Ressources/Audio/pacman_eatghost.wav" id="17_7wngl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drnoc"]
 atlas = ExtResource("1_u82o0")

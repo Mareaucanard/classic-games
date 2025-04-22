@@ -1,18 +1,17 @@
-extends Node
 class_name SaveUtils
 
-static var save_file = "user://classic_games.save"
 
 static func save_data(data: Dictionary):
 	var old_data = read_data()
 	old_data.merge(data, true)
-	var file = FileAccess.open(save_file, FileAccess.WRITE)
+	var file = FileAccess.open("user://classic_games.save", FileAccess.WRITE)
 	var text = JSON.stringify(old_data)
 	file.store_line(text)
+	file.close()
 
 static func read_data() -> Dictionary:
 	var data: Dictionary = {}
-	var file = FileAccess.open(save_file, FileAccess.READ_WRITE)
+	var file = FileAccess.open("user://classic_games.save", FileAccess.READ_WRITE)
 	if file == null:
 		return data
 	while file.get_position() < file.get_length():
@@ -22,4 +21,5 @@ static func read_data() -> Dictionary:
 		if not parse_result == OK:
 			continue
 		data.merge(row.data, true)
+	file.close()
 	return data
