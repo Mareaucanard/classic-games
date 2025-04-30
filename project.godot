@@ -22,6 +22,7 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
+"res://Games/MineSweeper/Ressources/": "teal",
 "res://Games/Pacman/Actors/": "red",
 "res://Games/Pacman/Ressources/": "teal",
 "res://Games/Space invaders/Actors/": "red",

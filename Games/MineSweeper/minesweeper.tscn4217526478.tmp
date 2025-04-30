@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjdlwr57wubbh"]
+
+[ext_resource type="Texture2D" uid="uid://cyfs4fw7dtk25" path="res://Games/MineSweeper/Ressources/minesweeper_atlas.png" id="1_grkcf"]
+[ext_resource type="Script" uid="uid://dp7go3xayd8th" path="res://Games/MineSweeper/mine_script.gd" id="2_6h724"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_grkcf"]
+texture = ExtResource("1_grkcf")
+margins = Vector2i(4, 4)
+separation = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/next_alternative_id = 2
+2:2/0 = 0
+2:2/1 = 1
+2:2/1/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_6h724"]
+custom_data_layer_0/name = "has_mine"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_grkcf")
+
+[node name="Minesweeper" type="Node2D"]
+
+[node name="Mine_board" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_6h724")
+navigation_enabled = false
+script = ExtResource("2_6h724")
+
+[node name="Camera2D" type="Camera2D" parent="."]
