@@ -18,7 +18,7 @@ var ghost_eaten_counter = 0
 
 func reset_game():
 	enable_all_pellets()
-	lives = 0
+	lives = 5
 	score = 0
 	ScoreLabel.text = str(score)
 	for ghost in ghosts:
