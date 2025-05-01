@@ -84,40 +84,15 @@ text = "Intermediate"
 layout_mode = 2
 text = "Expert"
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Custom" type="Button" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/MarginContainer/HBoxContainer"]
+[node name="Custom" type="Button" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons"]
 layout_mode = 2
 text = "Custom
 "
-
-[node name="Width" type="LineEdit" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/MarginContainer/HBoxContainer"]
-layout_mode = 2
-placeholder_text = "Width"
-
-[node name="Height" type="LineEdit" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/MarginContainer/HBoxContainer"]
-layout_mode = 2
-placeholder_text = "Height"
-
-[node name="Mines" type="LineEdit" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/MarginContainer/HBoxContainer"]
-layout_mode = 2
-placeholder_text = "Mines"
 
 [node name="Reset" type="Button" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "New game"
-
-[node name="Main Menu" type="Button" parent="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = "Go back to main menu"
 
 [node name="Game_UI" type="HBoxContainer" parent="UI/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -186,11 +161,8 @@ script = ExtResource("2_6h724")
 [connection signal="pressed" from="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/Beginner" to="." method="_on_beginner_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/Intermediate" to="." method="_on_intermediate_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/Expert" to="." method="_on_expert_pressed"]
-[connection signal="pressed" from="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/MarginContainer/HBoxContainer/Custom" to="." method="_on_custom_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/Reset" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="UI/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Buttons/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="flag_change" from="Mine_board" to="." method="_on_mine_board_flag_change"]
-[connection signal="game_ended" from="Mine_board" to="." method="_on_mine_board_game_ended"]
 [connection signal="has_reset" from="Mine_board" to="." method="_on_mine_board_has_reset"]
 [connection signal="started" from="Mine_board" to="." method="_on_mine_board_started"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

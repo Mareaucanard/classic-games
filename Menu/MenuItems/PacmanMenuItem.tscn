@@ -29,19 +29,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 toggle_mode = true
-text = "PACMAN"
+text = "Pacman"
 
 [node name="Description" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "This is a short description of pacman
-You pac da man
-whaho!"
+text = "Eat the pellets while trying to avoid the ghosts!
+If you eat a super pellet, you can turn the table and hunt the ghosts for a short whiel"
 label_settings = ExtResource("3_n6bo1")
 horizontal_alignment = 1
 vertical_alignment = 1

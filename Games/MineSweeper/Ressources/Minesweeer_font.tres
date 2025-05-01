@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbbj0orbgfuq6"]
+
+[ext_resource type="FontFile" uid="uid://b63dsw28e1wlv" path="res://Games/MineSweeper/Ressources/DS-DIGIB.TTF" id="1_to8o3"]
+
+[resource]
+font = ExtResource("1_to8o3")
+font_size = 48
+font_color = Color(1, 0, 0, 1)
+shadow_size = 0

@@ -1,13 +1,12 @@
 extends TileMapLayer
-
 class_name Minesweeper_grid
 
 signal flag_change(number_of_flags)
-signal lost
-signal won
+signal game_ended(won: bool)
 signal has_reset
 signal started
 
+@warning_ignore("integer_division")
 const CELLS := {
 	"1": Vector2i(0,0),
 	"2": Vector2i(1,0),
@@ -57,6 +56,7 @@ func reset():
 	flaged_cells = []
 	flag_counter = 0
 	generated_mines = false
+	has_reset.emit()
 
 func resize(width: int, height: int):
 	columns = width
@@ -65,17 +65,21 @@ func resize(width: int, height: int):
 	max_x = (columns+1)/2 - 1
 	min_y = -rows/2
 	max_y = (rows+1)/2 - 1
+	
+	
+	var ratio = min(72.0 / (width + 2), 34.0 / (height + 2), 3.0)
+	scale.x = ratio
+	scale.y = ratio
+	
 
-func _ready():
-	resize(columns, rows)
+func update_board_size_and_mines(width: int, height: int, mines_count: int) -> void:
+	resize(width, height)
+	number_of_mines = mines_count
 	reset()
 
+
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_R:
-			reset()
-			has_reset.emit()
-	elif event is InputEventMouseButton:
+	if event is InputEventMouseButton:
 		if event.pressed == true or game_finished:
 			return
 		var cell = local_to_map(get_local_mouse_position())
@@ -142,7 +146,7 @@ func on_place_flag(cell: Vector2i):
 	flag_change.emit(flag_counter)
 
 func hit_mine(cell: Vector2i):
-	lost.emit()
+	game_ended.emit(false)
 	for mine in mines_coordinates:
 		set_tile(mine, "unexploded_mine")
 	set_tile(cell, "exploded_mine")
@@ -151,13 +155,14 @@ func hit_mine(cell: Vector2i):
 func check_for_victory():
 	if flag_counter == number_of_mines and flag_counter + len(revealed_cells) == columns * rows:
 		pass
-		won.emit()
+		game_ended.emit(true)
 		game_finished = true
 
 func set_tile(coordiantes: Vector2i, cell_type: String):
 	set_cell(coordiantes, TILE_SET_ID, CELLS[cell_type])
 
 func generate_mines(players_pick: Vector2i):
+	started.emit()
 	var banned_cells: Array[Vector2i] = []
 	for y in range(-1, 2):
 		for x in range(-1, 2):
