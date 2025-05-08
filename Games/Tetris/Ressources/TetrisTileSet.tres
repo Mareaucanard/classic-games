@@ -1,0 +1,38 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bq1vwtiwaw21"]
+
+[ext_resource type="Texture2D" uid="uid://dcmmb7fs82qs5" path="res://Games/Tetris/Ressources/TetrisBlocks.png" id="1_mamhl"]
+[ext_resource type="Texture2D" uid="uid://jopmm6uyipsh" path="res://Games/Tetris/Ressources/TetrisBlocksTransparent.png" id="2_syb5n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xiadl"]
+resource_name = "Full_opacity"
+texture = ExtResource("1_mamhl")
+margins = Vector2i(4, 4)
+separation = Vector2i(10, 10)
+texture_region_size = Vector2i(62, 62)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tu3cq"]
+resource_name = "Half_trans"
+texture = ExtResource("2_syb5n")
+margins = Vector2i(4, 4)
+separation = Vector2i(10, 10)
+texture_region_size = Vector2i(62, 62)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+
+[resource]
+tile_size = Vector2i(62, 62)
+sources/0 = SubResource("TileSetAtlasSource_xiadl")
+sources/1 = SubResource("TileSetAtlasSource_tu3cq")

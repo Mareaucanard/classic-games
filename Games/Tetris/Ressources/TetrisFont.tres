@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://baf573k1cnymq"]
+
+[ext_resource type="FontFile" uid="uid://dncoduvd8onql" path="res://Games/Tetris/Ressources/tetris.ttf" id="1_jk2cv"]
+
+[resource]
+font = ExtResource("1_jk2cv")
+font_size = 35
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)

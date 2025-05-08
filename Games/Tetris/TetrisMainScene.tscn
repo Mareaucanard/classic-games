@@ -1,0 +1,245 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq0f63snc2o3y"]
+
+[ext_resource type="Texture2D" uid="uid://b4mom22u0hctt" path="res://Games/Tetris/Ressources/Tetris grid.png" id="1_n3pht"]
+[ext_resource type="Texture2D" uid="uid://c0fahtm40ufsj" path="res://Games/Tetris/Ressources/RoundedSquare.png" id="2_o14na"]
+[ext_resource type="TileSet" uid="uid://bq1vwtiwaw21" path="res://Games/Tetris/Ressources/TetrisTileSet.tres" id="2_xiadl"]
+[ext_resource type="Script" uid="uid://gebpwd5tqeiy" path="res://Games/Tetris/TetrisBoard.gd" id="3_xiadl"]
+[ext_resource type="LabelSettings" uid="uid://baf573k1cnymq" path="res://Games/Tetris/Ressources/TetrisFont.tres" id="3_ykduf"]
+[ext_resource type="Script" uid="uid://cy5bbqkuv2hby" path="res://Games/Tetris/TimeToVisible.gd" id="6_0j2kp"]
+
+[node name="TetrisMainScene" type="Node2D"]
+
+[node name="Board" type="Node2D" parent="."]
+position = Vector2(576, 359)
+
+[node name="GridBG" type="Node2D" parent="Board"]
+
+[node name="TetrisGrid" type="Sprite2D" parent="Board/GridBG"]
+self_modulate = Color(0.687215, 0.687215, 0.687215, 1)
+texture = ExtResource("1_n3pht")
+
+[node name="TetrisGrid2" type="Sprite2D" parent="Board/GridBG"]
+self_modulate = Color(0.686275, 0.686275, 0.686275, 1)
+rotation = -3.14159
+texture = ExtResource("1_n3pht")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Board"]
+position = Vector2(-120, -288)
+scale = Vector2(0.387, 0.387)
+tile_set = ExtResource("2_xiadl")
+script = ExtResource("3_xiadl")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopRight" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="NextSquare" type="Sprite2D" parent="UI/TopRight"]
+self_modulate = Color(0, 0.866667, 0.823529, 1)
+position = Vector2(-60, 50)
+texture = ExtResource("2_o14na")
+
+[node name="NextMapLayer" type="TileMapLayer" parent="UI/TopRight"]
+position = Vector2(-70, 26)
+scale = Vector2(0.387, 0.387)
+tile_set = ExtResource("2_xiadl")
+
+[node name="Label" type="Label" parent="UI/TopRight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = 60.0
+offset_right = 28.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "NEXT"
+label_settings = ExtResource("3_ykduf")
+horizontal_alignment = 2
+
+[node name="HoldSquare" type="Sprite2D" parent="UI/TopRight"]
+self_modulate = Color(0, 0.866667, 0.823529, 1)
+position = Vector2(-60, 242)
+texture = ExtResource("2_o14na")
+
+[node name="HoldMapLayer" type="TileMapLayer" parent="UI/TopRight"]
+position = Vector2(-70, 218)
+scale = Vector2(0.387, 0.387)
+tile_set = ExtResource("2_xiadl")
+
+[node name="Label2" type="Label" parent="UI/TopRight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = 252.0
+offset_right = 28.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "HOLD"
+label_settings = ExtResource("3_ykduf")
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="UI/TopRight"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = 351.0
+offset_bottom = 415.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Level 1"
+label_settings = ExtResource("3_ykduf")
+horizontal_alignment = 2
+
+[node name="TopLeft" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TopLeft"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/TopLeft/VBoxContainer"]
+layout_mode = 2
+text = "SCORE:"
+label_settings = ExtResource("3_ykduf")
+
+[node name="Score" type="Label" parent="UI/TopLeft/VBoxContainer"]
+layout_mode = 2
+text = "0000000000"
+label_settings = ExtResource("3_ykduf")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TopLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Label3" type="Label" parent="UI/TopLeft/VBoxContainer"]
+layout_mode = 2
+text = "HIGHSCORE:"
+label_settings = ExtResource("3_ykduf")
+
+[node name="Highscore" type="Label" parent="UI/TopLeft/VBoxContainer"]
+layout_mode = 2
+text = "0000000000"
+label_settings = ExtResource("3_ykduf")
+
+[node name="TextInfo" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TextInfo"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+offset_right = 99.0
+grow_vertical = 0
+
+[node name="Tetris" type="Label" parent="UI/TextInfo/VBoxContainer"]
+self_modulate = Color(0, 0.945098, 0.945098, 1)
+layout_mode = 2
+text = "Tetris"
+label_settings = ExtResource("3_ykduf")
+script = ExtResource("6_0j2kp")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TextInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="T_spin" type="Label" parent="UI/TextInfo/VBoxContainer"]
+self_modulate = Color(0.627451, 0, 0.945098, 1)
+layout_mode = 2
+text = "T-Spin"
+label_settings = ExtResource("3_ykduf")
+script = ExtResource("6_0j2kp")
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/TextInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Back_to_Back" type="Label" parent="UI/TextInfo/VBoxContainer"]
+self_modulate = Color(0, 0.941176, 0, 1)
+layout_mode = 2
+text = "Back to Back"
+label_settings = ExtResource("3_ykduf")
+script = ExtResource("6_0j2kp")
+
+[node name="MarginContainer3" type="MarginContainer" parent="UI/TextInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Perfect_clear" type="Label" parent="UI/TextInfo/VBoxContainer"]
+self_modulate = Color(0, 0, 0.945098, 1)
+layout_mode = 2
+text = "Perfect clear"
+label_settings = ExtResource("3_ykduf")
+script = ExtResource("6_0j2kp")
+
+[node name="MarginContainer4" type="MarginContainer" parent="UI/TextInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Gameover" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hint" type="Label" parent="UI/Gameover"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -367.5
+offset_top = -93.5
+offset_right = 367.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER
+Press r to retry
+
+Press return to go
+back to the main menu"
+label_settings = ExtResource("3_ykduf")
+horizontal_alignment = 1
