@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cyfs4fw7dtk25" path="res://Games/MineSweeper/Ressources/minesweeper_atlas.png" id="1_grkcf"]
 [ext_resource type="Script" uid="uid://br4ks16jvtgo6" path="res://Games/MineSweeper/minesweeper.gd" id="1_o850c"]
 [ext_resource type="Texture2D" uid="uid://dmefgoqspbgr" path="res://Games/MineSweeper/Ressources/button_smile.png" id="1_yhdvj"]
-[ext_resource type="Script" uid="uid://dp7go3xayd8th" path="res://Games/MineSweeper/mine_script.gd" id="2_6h724"]
+[ext_resource type="Script" uid="uid://dp7go3xayd8th" path="res://Games/MineSweeper/grid_script.gd" id="2_6h724"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_grkcf"]
 texture = ExtResource("1_grkcf")

@@ -21,7 +21,6 @@ const CELLS := {
 	"flag": Vector2i(0,2),
 	"unexploded_mine": Vector2i(1,2),
 	"hidden": Vector2i(2,2)
-	
 }
 
 @export var columns: int = 8
