@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://dntxmwhixqh1b"]
+
+[ext_resource type="Script" uid="uid://jvew14y6l6rg" path="res://Games/Frogger/Actors/Scenes/log.gd" id="1_o05bn"]
+[ext_resource type="Texture2D" uid="uid://b40n53llf06x4" path="res://Games/Frogger/Assets/LogStart.png" id="2_3fs0c"]
+[ext_resource type="Texture2D" uid="uid://cf8od3twergli" path="res://Games/Frogger/Assets/LogMiddle.png" id="3_qj0e1"]
+[ext_resource type="Texture2D" uid="uid://b7gprr0cjev77" path="res://Games/Frogger/Assets/LogEnd.png" id="4_kyajl"]
+
+[node name="Log" type="Node2D"]
+script = ExtResource("1_o05bn")
+log_start_scene = ExtResource("2_3fs0c")
+log_middle_scene = ExtResource("3_qj0e1")
+log_end_scene = ExtResource("4_kyajl")

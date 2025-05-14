@@ -26,6 +26,8 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
+"res://Games/Frogger/Actors/": "red",
+"res://Games/Frogger/Assets/": "teal",
 "res://Games/MineSweeper/Ressources/": "teal",
 "res://Games/Pacman/Actors/": "red",
 "res://Games/Pacman/Ressources/": "teal",

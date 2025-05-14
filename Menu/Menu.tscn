@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnhtbuwfm8mvf"]
+[gd_scene load_steps=10 format=3 uid="uid://cnhtbuwfm8mvf"]
 
 [ext_resource type="Script" uid="uid://dtib4vt42sfbo" path="res://Menu/game_selector.gd" id="1_e56cd"]
 [ext_resource type="PackedScene" uid="uid://big407jcu4eev" path="res://Menu/MenuItems/PacmanMenuItem.tscn" id="3_crea4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d2bhjvi7q3cch" path="res://Menu/MenuItems/SpaceInvadersMenuItem.tscn" id="4_w32jx"]
 [ext_resource type="PackedScene" uid="uid://cq7gtrj1js4ro" path="res://Menu/MenuItems/Tetris.tscn" id="5_0cyjp"]
 [ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="5_w32jx"]
+[ext_resource type="PackedScene" uid="uid://bue84bheqmpdu" path="res://Menu/MenuItems/Frogger.tscn" id="6_m87qx"]
 
 [sub_resource type="Theme" id="Theme_e56cd"]
 VScrollBar/styles/grabber_pressed = null
@@ -90,7 +91,10 @@ layout_mode = 2
 [node name="MineSweeper" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("4_0cyjp")]
 layout_mode = 2
 
-[node name="Space Invaders2" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("5_0cyjp")]
+[node name="Tetris" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("5_0cyjp")]
+layout_mode = 2
+
+[node name="Frogger" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("6_m87qx")]
 layout_mode = 2
 
 [node name="InfoMarginContainer" type="MarginContainer" parent="HBoxContainer"]
@@ -111,7 +115,7 @@ This description gets deleted on start
 Extra, extra, extra long text to see line wrapping"
 label_settings = ExtResource("5_w32jx")
 horizontal_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2
 
 [node name="Screenshot" type="TextureRect" parent="HBoxContainer/InfoMarginContainer/InfoContainer"]
 layout_mode = 2
