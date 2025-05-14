@@ -8,6 +8,7 @@ const FULL_OPACITY_LAYER = 0
 const TRANSPARENT_LAYER = 1
 
 @onready var score_label = $"../../UI/TopLeft/VBoxContainer/Score"
+@warning_ignore_start("integer_division")
 
 enum COLORS {BLUE, CYAN, GREEN, ORANGE, PURPLE, RED, YELLOW, NONE}
 const BLOCK_ATLAS := {

@@ -34,7 +34,7 @@ func disable():
 	visible = false
 	enabled = false
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if not enabled:
 		return
 	disable()

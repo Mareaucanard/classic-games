@@ -99,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		state = state_enum.CHASING
 		
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if state == state_enum.CHASING or state == state_enum.SCATTER:
 		killed_player.emit()
 	elif state == state_enum.VULNERABLE:

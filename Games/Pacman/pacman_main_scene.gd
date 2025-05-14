@@ -62,7 +62,7 @@ func all_pellets_go_eaten() -> bool:
 	var pellets = get_tree().get_nodes_in_group("PacmanPellet")
 	return pellets.all(func (pellet: PacmanPellet): return not pellet.is_enabled())
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("go_to_main_menu"):
 		if score > highscore:
 			highscore = score

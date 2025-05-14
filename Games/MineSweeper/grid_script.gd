@@ -6,7 +6,7 @@ signal game_ended(won: bool)
 signal has_reset
 signal started
 
-@warning_ignore("integer_division")
+@warning_ignore_start("integer_division")
 const CELLS := {
 	"1": Vector2i(0,0),
 	"2": Vector2i(1,0),
@@ -127,7 +127,6 @@ func on_cell_clicked(cell: Vector2i):
 func on_place_flag(cell: Vector2i):
 	if not is_inside_board(cell) or cell in revealed_cells:
 		return
-	var tile_data = get_cell_tile_data(cell)
 	var atlas_coord = get_cell_atlas_coords(cell)
 	
 	if atlas_coord == CELLS.hidden:

@@ -72,7 +72,7 @@ func _on_custom_pressed() -> void:
 		return
 	if height <= 1 or height > max_height:
 		return
-	if mines < 1 or mines > (width * height / 3) or mines > 999:
+	if mines < 1 or mines > (width * height / 3.0) or mines > 999:
 		return
 	
 	board.update_board_size_and_mines(width, height, mines)
@@ -86,7 +86,7 @@ func _on_mine_board_game_ended(won: bool) -> void:
 		smiley_face.texture = textures.LOST
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("go_to_main_menu"):
 		get_tree().change_scene_to_file("res://Menu/Menu.tscn")
 	
