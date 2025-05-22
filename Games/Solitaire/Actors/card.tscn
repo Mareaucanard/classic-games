@@ -1,21 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://desj2dmti0so"]
+[gd_scene load_steps=7 format=3 uid="uid://desj2dmti0so"]
 
 [ext_resource type="Texture2D" uid="uid://dfjb08sudrdu6" path="res://Games/Solitaire/Ressources/Cards/cardset-4-colours/back01.png" id="1_ckbwn"]
 [ext_resource type="Script" uid="uid://sk3r1cldaukx" path="res://Games/Solitaire/Actors/card.gd" id="1_f75tb"]
 
+[sub_resource type="Gradient" id="Gradient_f75tb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l8kgy"]
+gradient = SubResource("Gradient_f75tb")
+width = 214
+height = 314
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fms0"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f75tb"]
 size = Vector2(210, 310)
 
-[node name="Card" type="Node2D"]
-scale = Vector2(0.3, 0.3)
+[node name="Card" type="Node2D" groups=["SolitaireCard"]]
 script = ExtResource("1_f75tb")
+cardback = ExtResource("1_ckbwn")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Wrapper" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Outline" type="Sprite2D" parent="Wrapper"]
+self_modulate = Color(1, 0, 1, 1)
+texture = SubResource("GradientTexture2D_l8kgy")
+
+[node name="Sprite" type="Sprite2D" parent="Wrapper"]
+material = SubResource("ShaderMaterial_8fms0")
 texture = ExtResource("1_ckbwn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Wrapper"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrapper/Area2D"]
 shape = SubResource("RectangleShape2D_f75tb")
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Wrapper/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Wrapper/Area2D" to="." method="_on_area_2d_mouse_exited"]

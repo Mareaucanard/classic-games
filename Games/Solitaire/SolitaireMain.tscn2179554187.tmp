@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kdc2fsh7wn2a"]
+
+[ext_resource type="Script" uid="uid://de8lhiwfvn1ua" path="res://Games/Solitaire/solitaire_main.gd" id="1_rrfr2"]
+
+[node name="SolitaireMain" type="Node2D"]
+script = ExtResource("1_rrfr2")

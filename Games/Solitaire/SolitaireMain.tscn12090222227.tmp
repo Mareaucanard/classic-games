@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://kdc2fsh7wn2a"]
+[gd_scene load_steps=3 format=3 uid="uid://kdc2fsh7wn2a"]
 
 [ext_resource type="Script" uid="uid://de8lhiwfvn1ua" path="res://Games/Solitaire/Ressources/solitaire_main.gd" id="1_rrfr2"]
 [ext_resource type="PackedScene" uid="uid://85r2ram5frfl" path="res://Games/Solitaire/Actors/stack.tscn" id="2_5ss8i"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_5ss8i"]
-font_size = 64
 
 [node name="SolitaireMain" type="Node2D"]
 script = ExtResource("1_rrfr2")
@@ -28,7 +25,7 @@ position = Vector2(390, 0)
 type = 2
 
 [node name="Boards" type="Node2D" parent="."]
-position = Vector2(139, 290)
+position = Vector2(139, 300)
 
 [node name="Stack" parent="Boards" instance=ExtResource("2_5ss8i")]
 offset = Vector2(0, 30)
@@ -70,12 +67,12 @@ offset = Vector2(20, 0)
 type = 1
 
 [node name="Label" type="Label" parent="."]
-offset_left = 211.0
-offset_top = 215.0
-offset_right = 1020.0
-offset_bottom = 394.0
+visible = false
+offset_left = 498.0
+offset_top = 275.0
+offset_right = 701.0
+offset_bottom = 324.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Congratulations, you won!
 Press R to play again"
-label_settings = SubResource("LabelSettings_5ss8i")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://85r2ram5frfl"]
+
+[ext_resource type="Script" uid="uid://bsg141u3mm5rb" path="res://Games/Solitaire/Actors/stack.gd" id="1_jxqls"]
+[ext_resource type="Texture2D" uid="uid://ccpywe2v8701y" path="res://Games/Solitaire/Ressources/Cards/cardset-4-colours/back02.png" id="2_epo8f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfo7i"]
+size = Vector2(210, 310)
+
+[node name="Stack" type="Node2D" groups=["SolitaireStack"]]
+script = ExtResource("1_jxqls")
+
+[node name="Wrapper" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="Wrapper"]
+texture = ExtResource("2_epo8f")
+
+[node name="Area2D" type="Area2D" parent="Wrapper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wrapper/Area2D"]
+shape = SubResource("RectangleShape2D_vfo7i")
+
+[connection signal="mouse_entered" from="Wrapper/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Wrapper/Area2D" to="." method="_on_area_2d_mouse_exited"]
