@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kdc2fsh7wn2a"]
+
+[ext_resource type="Script" uid="uid://de8lhiwfvn1ua" path="res://Games/Solitaire/solitaire_main.gd" id="1_rrfr2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrfr2"]
+size = Vector2(1, 1)
+
+[node name="SolitaireMain" type="Node2D"]
+script = ExtResource("1_rrfr2")
+
+[node name="CursorArea2d" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorArea2d"]
+shape = SubResource("RectangleShape2D_rrfr2")

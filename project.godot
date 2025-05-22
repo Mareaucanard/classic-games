@@ -31,6 +31,8 @@ folder_colors={
 "res://Games/MineSweeper/Ressources/": "teal",
 "res://Games/Pacman/Actors/": "red",
 "res://Games/Pacman/Ressources/": "teal",
+"res://Games/Solitaire/Actors/": "red",
+"res://Games/Solitaire/Ressources/": "teal",
 "res://Games/Space invaders/Actors/": "red",
 "res://Games/Space invaders/Levels/": "green",
 "res://Games/Space invaders/Ressources/": "teal",
