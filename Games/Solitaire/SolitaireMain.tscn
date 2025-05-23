@@ -58,14 +58,14 @@ position = Vector2(900, 0)
 offset = Vector2(0, 30)
 
 [node name="DrawPileNext" parent="." instance=ExtResource("2_5ss8i")]
-position = Vector2(256, 98)
+position = Vector2(100, 100)
 type = 0
 
 [node name="HiddenStack" parent="." instance=ExtResource("2_5ss8i")]
 position = Vector2(78, -124)
 
 [node name="DrawPilePlayable" parent="." instance=ExtResource("2_5ss8i")]
-position = Vector2(76, 97)
+position = Vector2(250, 100)
 offset = Vector2(20, 0)
 type = 1
 

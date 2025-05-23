@@ -13,6 +13,10 @@ enum STACK_TYPES {
 	BOARD,
 }
 
+func _ready() -> void:
+	if type == STACK_TYPES.DRAW_PILE_PLAYABLE:
+		visible = false
+
 func get_bottom_card() -> SolitaireCard:
 	if top_card == null:
 		return null

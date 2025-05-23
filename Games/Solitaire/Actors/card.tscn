@@ -24,7 +24,7 @@ cardback = ExtResource("1_ckbwn")
 scale = Vector2(0.5, 0.5)
 
 [node name="Outline" type="Sprite2D" parent="Wrapper"]
-self_modulate = Color(1, 0, 1, 1)
+self_modulate = Color(0, 0, 0, 0.298039)
 texture = SubResource("GradientTexture2D_l8kgy")
 
 [node name="Sprite" type="Sprite2D" parent="Wrapper"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dla2vr4rw7ail"]
+
+[ext_resource type="Script" uid="uid://dgmvbm4w8xdfi" path="res://Menu/menu_item.gd" id="1_iyuiw"]
+[ext_resource type="PackedScene" uid="uid://kdc2fsh7wn2a" path="res://Games/Solitaire/SolitaireMain.tscn" id="2_iyuiw"]
+[ext_resource type="Texture2D" uid="uid://ktjysguh8msu" path="res://Menu/MenuItems/Screenshots/Solitaire.png" id="3_vmboe"]
+[ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="4_c2vt6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x1jk4"]
+size = Vector2(536, 77)
+
+[node name="Solitaire" type="TextureRect"]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("PlaceholderTexture2D_x1jk4")
+script = ExtResource("1_iyuiw")
+scene = ExtResource("2_iyuiw")
+screenshot = ExtResource("3_vmboe")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+text = "Solitaire Klondike"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The oldest game here, from 1907!
+Complete the four fondations from Aces to King for each Suit
+3 card variant"
+label_settings = ExtResource("4_c2vt6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]
