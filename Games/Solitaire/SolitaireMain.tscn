@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kdc2fsh7wn2a"]
 
-[ext_resource type="Script" uid="uid://de8lhiwfvn1ua" path="res://Games/Solitaire/Ressources/solitaire_main.gd" id="1_rrfr2"]
+[ext_resource type="Script" uid="uid://de8lhiwfvn1ua" path="res://Games/Solitaire/solitaire_main.gd" id="1_rrfr2"]
 [ext_resource type="PackedScene" uid="uid://85r2ram5frfl" path="res://Games/Solitaire/Actors/stack.tscn" id="2_5ss8i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ss8i"]
