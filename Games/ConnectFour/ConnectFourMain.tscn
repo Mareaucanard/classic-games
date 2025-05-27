@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2w1rdrwe1wt5"]
+
+[ext_resource type="Script" uid="uid://oosbtqf4clej" path="res://Games/ConnectFour/connect_four_main.gd" id="1_a1e34"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1e34"]
+font_size = 64
+
+[node name="ConnectFourMain" type="Node2D"]
+script = ExtResource("1_a1e34")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_right = 1149.0
+offset_bottom = 648.0
+color = Color(0, 0, 0.737255, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_right = 1149.0
+offset_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+color = Color(0, 8.27247e-09, 0.0381052, 1)
+
+[node name="Label" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -44.0
+offset_right = 31.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+label_settings = SubResource("LabelSettings_a1e34")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(576, 609.5)

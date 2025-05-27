@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2w1rdrwe1wt5"]
+
+[ext_resource type="Script" uid="uid://oosbtqf4clej" path="res://Games/ConnectFour/connect_four_main.gd" id="1_a1e34"]
+
+[node name="ConnectFourMain" type="Node2D"]
+script = ExtResource("1_a1e34")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_right = 1149.0
+offset_bottom = 648.0
+color = Color(0, 0, 0.737255, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_right = 1149.0
+offset_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+color = Color(0, 8.27247e-09, 0.0381052, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(576, 609.5)

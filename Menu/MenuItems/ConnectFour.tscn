@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://8fm7ktijsytm"]
+
+[ext_resource type="Script" uid="uid://dgmvbm4w8xdfi" path="res://Menu/menu_item.gd" id="1_gxs8g"]
+[ext_resource type="PackedScene" uid="uid://c2w1rdrwe1wt5" path="res://Games/ConnectFour/ConnectFourMain.tscn" id="2_gxs8g"]
+[ext_resource type="Texture2D" uid="uid://dwhnliqco0gnj" path="res://Menu/MenuItems/Screenshots/Connect4.png" id="3_t228g"]
+[ext_resource type="LabelSettings" uid="uid://co6uy0h6degib" path="res://Menu/menu_item_font.tres" id="4_euw13"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x1jk4"]
+size = Vector2(536, 77)
+
+[node name="ConnectFour" type="TextureRect"]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 77.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("PlaceholderTexture2D_x1jk4")
+script = ExtResource("1_gxs8g")
+scene = ExtResource("2_gxs8g")
+screenshot = ExtResource("3_t228g")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+text = "Connect Four"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Can you connect four of your coloured disks by dropping them into the holder before your opponent does?"
+label_settings = ExtResource("4_euw13")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

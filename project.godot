@@ -45,6 +45,7 @@ folder_colors={
 PacmanPellet=""
 SolitaireCard=""
 SolitaireStack=""
+Connect4Hole=""
 
 [input]
 

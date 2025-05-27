@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp0uldqfjmxk1"]
+
+[ext_resource type="Script" uid="uid://bfxxf301eipc4" path="res://Games/ConnectFour/circle_hole.gd" id="1_jn7f6"]
+[ext_resource type="Texture2D" uid="uid://bvbqqb2next8x" path="res://Games/ConnectFour/Circle.png" id="2_jdqmf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7qwe"]
+radius = 25.0
+
+[node name="CircleHole" type="Area2D" groups=["Connect4Hole"]]
+script = ExtResource("1_jn7f6")
+
+[node name="Circle" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_jdqmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o7qwe")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
