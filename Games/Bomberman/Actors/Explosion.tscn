@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://wdjh78cu1gcy"]
+[gd_scene load_steps=6 format=3 uid="uid://wdjh78cu1gcy"]
 
 [ext_resource type="Script" uid="uid://cembypt476mq" path="res://Games/Bomberman/Actors/explosion.gd" id="1_fi25c"]
 [ext_resource type="Texture2D" uid="uid://dodusjk1pfcs" path="res://Games/Bomberman/Ressources/NES - Bomberman - General Sprites.png" id="2_gqudy"]
@@ -73,6 +73,9 @@ texture = ExtResource("2_gqudy")
 [sub_resource type="TileSet" id="TileSet_mxobs"]
 sources/1 = SubResource("TileSetAtlasSource_ckonk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqudy"]
+size = Vector2(16.5, 16.5)
+
 [node name="Explosion" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
@@ -83,14 +86,14 @@ position = Vector2(-8, -8)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 1, 0, 2, 0, 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0, 6, 0, 0, 0, 0, 0, 1, 0, 1, 0, 2, 0, 8, 0, 0, 0, 255, 255, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 6, 0, 0, 0)
 tile_set = SubResource("TileSet_mxobs")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(8, -8, 24, -8, 24, 8, 8, 8, 8, 24, -8, 24, -8, 8, -24, 8, -24, -8, -8, -8, -8, -24, 8, -24)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gqudy")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

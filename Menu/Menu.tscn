@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnhtbuwfm8mvf"]
+[gd_scene load_steps=13 format=3 uid="uid://cnhtbuwfm8mvf"]
 
 [ext_resource type="Script" uid="uid://dtib4vt42sfbo" path="res://Menu/game_selector.gd" id="1_e56cd"]
 [ext_resource type="PackedScene" uid="uid://big407jcu4eev" path="res://Menu/MenuItems/PacmanMenuItem.tscn" id="3_crea4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bue84bheqmpdu" path="res://Menu/MenuItems/Frogger.tscn" id="6_m87qx"]
 [ext_resource type="PackedScene" uid="uid://dla2vr4rw7ail" path="res://Menu/MenuItems/SolitaireKlondike.tscn" id="7_3c4i7"]
 [ext_resource type="PackedScene" uid="uid://8fm7ktijsytm" path="res://Menu/MenuItems/ConnectFour.tscn" id="8_fipr7"]
+[ext_resource type="PackedScene" uid="uid://cmo7f8nc3upw1" path="res://Menu/MenuItems/Bomberman.tscn" id="9_62dhm"]
 
 [sub_resource type="Theme" id="Theme_e56cd"]
 VScrollBar/styles/grabber_pressed = null
@@ -103,6 +104,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ConnectFour" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("8_fipr7")]
+layout_mode = 2
+
+[node name="Bomberman" parent="HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ItemListContainer" instance=ExtResource("9_62dhm")]
 layout_mode = 2
 
 [node name="InfoMarginContainer" type="MarginContainer" parent="HBoxContainer"]

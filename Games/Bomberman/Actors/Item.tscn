@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b18md5c5y1bp6"]
+
+[ext_resource type="Script" uid="uid://ddncem1ssh8ll" path="res://Games/Bomberman/Actors/item.gd" id="1_owlon"]
+[ext_resource type="Texture2D" uid="uid://cgppbh882fatq" path="res://Games/Bomberman/Ressources/NES - Bomberman - Items.png" id="2_g1sb8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juf3v"]
+atlas = ExtResource("2_g1sb8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhx6n"]
+atlas = ExtResource("2_g1sb8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qafet"]
+atlas = ExtResource("2_g1sb8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_owlon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juf3v")
+}],
+"loop": true,
+"name": &"Bombs",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhx6n")
+}],
+"loop": true,
+"name": &"ExplosionRadius",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qafet")
+}],
+"loop": true,
+"name": &"Speed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owlon"]
+size = Vector2(15.25, 15.25)
+
+[node name="Item" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_owlon")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_owlon")
+animation = &"Speed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_owlon")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

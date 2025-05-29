@@ -3,12 +3,14 @@ class_name BombermanBomb
 
 var explosion_level = 1
 var explosion_class := preload("res://Games/Bomberman/Actors/Explosion.tscn")
+var coordinates = Vector2i(0, 0)
 
 signal on_exploded(BombermanBomb)
 
 func explode():
 	var explosion = explosion_class.instantiate() as BombermanExplosion
 	explosion.position = position
+	explosion.coordinates = coordinates
 	explosion.change_explosion_size(explosion_level)
 	get_parent().call_deferred("add_child", explosion)
 	on_exploded.emit(self)
