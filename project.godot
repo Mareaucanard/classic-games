@@ -26,6 +26,8 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
+"res://Games/Bomberman/Actors/": "red",
+"res://Games/Bomberman/Ressources/": "teal",
 "res://Games/Frogger/Actors/": "red",
 "res://Games/Frogger/Assets/": "teal",
 "res://Games/MineSweeper/Ressources/": "teal",
@@ -121,6 +123,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="enemies"
 2d_physics/layer_2="player"
 2d_physics/layer_3="projectile"
+2d_physics/layer_4="items"
 
 [rendering]
 

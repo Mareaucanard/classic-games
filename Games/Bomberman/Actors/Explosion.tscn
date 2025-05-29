@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://wdjh78cu1gcy"]
+
+[ext_resource type="Script" uid="uid://cembypt476mq" path="res://Games/Bomberman/Actors/explosion.gd" id="1_fi25c"]
+[ext_resource type="Texture2D" uid="uid://dodusjk1pfcs" path="res://Games/Bomberman/Ressources/NES - Bomberman - General Sprites.png" id="2_gqudy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ckonk"]
+resource_name = "Explosion"
+texture = ExtResource("2_gqudy")
+2:4/animation_columns = 2
+2:4/animation_separation = Vector2i(4, 4)
+2:4/animation_frame_0/duration = 0.25
+2:4/animation_frame_1/duration = 0.25
+2:4/animation_frame_2/duration = 0.25
+2:4/animation_frame_3/duration = 0.25
+2:4/0 = 0
+0:6/animation_columns = 2
+0:6/animation_separation = Vector2i(4, 4)
+0:6/animation_frame_0/duration = 0.25
+0:6/animation_frame_1/duration = 0.25
+0:6/animation_frame_2/duration = 0.25
+0:6/animation_frame_3/duration = 0.25
+0:6/0 = 0
+1:6/animation_columns = 2
+1:6/animation_separation = Vector2i(4, 4)
+1:6/animation_frame_0/duration = 0.25
+1:6/animation_frame_1/duration = 0.25
+1:6/animation_frame_2/duration = 0.25
+1:6/animation_frame_3/duration = 0.25
+1:6/0 = 0
+2:6/animation_columns = 2
+2:6/animation_separation = Vector2i(4, 4)
+2:6/animation_frame_0/duration = 0.25
+2:6/animation_frame_1/duration = 0.25
+2:6/animation_frame_2/duration = 0.25
+2:6/animation_frame_3/duration = 0.25
+2:6/0 = 0
+3:6/animation_columns = 2
+3:6/animation_separation = Vector2i(4, 4)
+3:6/animation_frame_0/duration = 0.25
+3:6/animation_frame_1/duration = 0.25
+3:6/animation_frame_2/duration = 0.25
+3:6/animation_frame_3/duration = 0.25
+3:6/0 = 0
+4:6/animation_columns = 2
+4:6/animation_separation = Vector2i(4, 4)
+4:6/animation_frame_0/duration = 0.25
+4:6/animation_frame_1/duration = 0.25
+4:6/animation_frame_2/duration = 0.25
+4:6/animation_frame_3/duration = 0.25
+4:6/0 = 0
+2:5/animation_columns = 2
+2:5/animation_separation = Vector2i(4, 4)
+2:5/animation_frame_0/duration = 0.25
+2:5/animation_frame_1/duration = 0.25
+2:5/animation_frame_2/duration = 0.25
+2:5/animation_frame_3/duration = 0.25
+2:5/0 = 0
+2:7/animation_columns = 2
+2:7/animation_separation = Vector2i(4, 4)
+2:7/animation_frame_0/duration = 0.25
+2:7/animation_frame_1/duration = 0.25
+2:7/animation_frame_2/duration = 0.25
+2:7/animation_frame_3/duration = 0.25
+2:7/0 = 0
+2:8/animation_columns = 2
+2:8/animation_separation = Vector2i(4, 4)
+2:8/animation_frame_0/duration = 0.25
+2:8/animation_frame_1/duration = 0.25
+2:8/animation_frame_2/duration = 0.25
+2:8/animation_frame_3/duration = 0.25
+2:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mxobs"]
+sources/1 = SubResource("TileSetAtlasSource_ckonk")
+
+[node name="Explosion" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_fi25c")
+
+[node name="Effects" type="TileMapLayer" parent="."]
+position = Vector2(-8, -8)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 1, 0, 2, 0, 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0, 6, 0, 0, 0, 0, 0, 1, 0, 1, 0, 2, 0, 8, 0, 0, 0, 255, 255, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 6, 0, 0, 0)
+tile_set = SubResource("TileSet_mxobs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(8, -8, 24, -8, 24, 8, 8, 8, 8, 24, -8, 24, -8, 8, -24, 8, -24, -8, -8, -8, -8, -24, 8, -24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

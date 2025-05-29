@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcwbm8x48vxmh"]
+
+[ext_resource type="Script" uid="uid://62foxmfhytkb" path="res://Games/Bomberman/Actors/block.gd" id="1_fqbxc"]
+[ext_resource type="Texture2D" uid="uid://hiw7mnlgq4ms" path="res://Games/Bomberman/Ressources/NES - Bomberman - Playfield.png" id="2_g138k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqbxc"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atgdq"]
+atlas = ExtResource("2_g138k")
+region = Rect2(16, 209, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scsmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atgdq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Block" type="Area2D"]
+z_index = 5
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_fqbxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fqbxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_scsmr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

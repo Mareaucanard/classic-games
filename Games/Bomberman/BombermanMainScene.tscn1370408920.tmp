@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://co5s03rms8apq"]
+
+[ext_resource type="Texture2D" uid="uid://hiw7mnlgq4ms" path="res://Games/Bomberman/Ressources/NES - Bomberman - Playfield.png" id="1_6awoq"]
+[ext_resource type="Script" uid="uid://8verq8bxsubt" path="res://Games/Bomberman/player.gd" id="2_l11yk"]
+[ext_resource type="Texture2D" uid="uid://dodusjk1pfcs" path="res://Games/Bomberman/Ressources/NES - Bomberman - General Sprites.png" id="3_5748u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ckd16"]
+resource_name = "Playfield"
+texture = ExtResource("1_6awoq")
+0:0/size_in_atlas = Vector2i(31, 13)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k0gvo"]
+sources/0 = SubResource("TileSetAtlasSource_ckd16")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtncd"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtkkq"]
+atlas = ExtResource("3_5748u")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trw3e"]
+atlas = ExtResource("3_5748u")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dei83"]
+atlas = ExtResource("3_5748u")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvr1s"]
+atlas = ExtResource("3_5748u")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7mrt"]
+atlas = ExtResource("3_5748u")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kam7e"]
+atlas = ExtResource("3_5748u")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyptm"]
+atlas = ExtResource("3_5748u")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ofqw"]
+atlas = ExtResource("3_5748u")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2xn7"]
+atlas = ExtResource("3_5748u")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6auhf"]
+atlas = ExtResource("3_5748u")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfn85"]
+atlas = ExtResource("3_5748u")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opif4"]
+atlas = ExtResource("3_5748u")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6h4x"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtkkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trw3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dei83")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvr1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7mrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kam7e")
+}],
+"loop": true,
+"name": &"left",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyptm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ofqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2xn7")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6auhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfn85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opif4")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="BomberMainScene" type="Node2D"]
+
+[node name="Playflied" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 15, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_k0gvo")
+
+[node name="Blocks" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 15, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_k0gvo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(24, 24)
+script = ExtResource("2_l11yk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_wtncd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_o6h4x")
+animation = &"down"

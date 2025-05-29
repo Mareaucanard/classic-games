@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://wdjh78cu1gcy"]
+
+[ext_resource type="Script" uid="uid://cembypt476mq" path="res://Games/Bomberman/Actors/explosion.gd" id="1_fi25c"]
+
+[node name="Explosion" type="Area2D"]
+script = ExtResource("1_fi25c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(8, -8, 24, -8, 24, 8, 8, 8, 8, 24, -8, 24, -8, 8, -24, 8, -24, -8, -8, -8, -8, -24, 8, -24)
